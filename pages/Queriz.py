@@ -61,9 +61,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-os.environ["GROQ_API_KEY"] = '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'
-os.environ["OPENAI_API_KEY"] = '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' 
-os.environ["TAVILY_API_KEY"] = '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'
+openai = st.secrets.db_credentials.openai 
+tavily = st.secrets.db_credentials.tavily
+groq = st.secrets.db_credentials.groq
 
 
 class CustomEmbeddings(Embeddings):
