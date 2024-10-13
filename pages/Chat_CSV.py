@@ -149,12 +149,12 @@ class AIDecisionTracker:
         }
 
 # Set the API key for NVIDIA language model
-os.environ["NVIDIA_API_KEY"] = "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"
+nvidia = st.secrets.db_credentials.nvidia
 
 # Initialize the language model
 @st.cache_resource
 def load_llm():
-    return ChatNVIDIA(model="mistralai/mixtral-8x7b-instruct-v0.1")
+    return ChatNVIDIA(model="mistralai/mixtral-8x7b-instruct-v0.1", api_key = nvidia)
 
 llm = load_llm()
 
