@@ -343,14 +343,14 @@ if 'chat_history' not in st.session_state:
 # Use columns to center the conversation container and set width
 
 with col2:
-    st.write(f"### {st.session_state['current_Session']} :")
-    into_text = "### Chat with your SQL database."
+    into_text = "### Chat with your SQL database"
     with col2:
         def stream_data():
             for word in into_text.split(" "):
                 yield word + " "
                 time.sleep(0.08)
         st.write_stream(stream_data)
+    st.write(f"### {st.session_state['current_Session']} :")
     parser = StrOutputParser()
     # Display the conversation history
     for message in st.session_state['Session'][st.session_state['current_Session']]:
@@ -364,7 +364,6 @@ with col2:
             message_class = "assistant-message"
             st.write("### Agent Response:")
             st.write(parser.parse(message["text"]))
-            #st.markdown(f'<div class="message-container"><p class="{message_class}">{parser.parse(message["text"])}</p></div>', unsafe_allow_html=True)
 #--------------------------------------------------------------------------------------------------------
 # Input field for user query
 user_input = st.chat_input("Query your database:",args=(True,))
