@@ -84,7 +84,7 @@ llm = ChatGroq(
 #-------------------------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------- db --------------------------------------------------------------------------------------------------------------------------
 
-db = SQLDatabase.from_uri("Chinook.db")
+db = SQLDatabase.from_uri("sqlite://Chinook.db")
 col1, col2, col3 = st.columns([1,4,1])
 with col1:
         st.image(r'C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\transperent_logo.png', width=200)
