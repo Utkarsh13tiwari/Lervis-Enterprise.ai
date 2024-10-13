@@ -344,7 +344,7 @@ if 'chat_history' not in st.session_state:
 
 with col2:
     st.write(f"### {st.session_state['current_Session']} :")
-
+    parser = StrOutputParser()
     # Display the conversation history
     for message in st.session_state['Session'][st.session_state['current_Session']]:
         #message_class = "user-message" if message["isUser"] else "assistant-message"
@@ -356,7 +356,7 @@ with col2:
         elif not message["isUser"]: 
             message_class = "assistant-message"
             st.write("### Agent Response:")
-            st.markdown(f'<div class="message-container"><p class="{message_class}">{message["text"]}</p></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="message-container"><p class="{message_class}">{parser.parse(message["text"])}</p></div>', unsafe_allow_html=True)
 
 #--------------------------------------------------------------------------------------------------------
 # Input field for user query
