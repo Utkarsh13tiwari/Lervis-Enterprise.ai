@@ -1,0 +1,3649 @@
+2024-10-09 00:35:02 [INFO] Question: How many doctors are there?
+2024-10-09 00:35:02 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2024-10-09 00:35:02 [INFO] Prompt ID: ed5721e7-e13d-4e09-832d-238c4b45b601
+2024-10-09 00:35:02 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-09 00:35:02 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-09 00:35:02 [INFO] Executing Step 1: CacheLookup
+2024-10-09 00:35:02 [INFO] Executing Step 2: PromptGeneration
+2024-10-09 00:35:02 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Isha Bhatt,1200,15,1,2
+Dr. Priya Gupta,2000,25,2,1
+Dr. Manish Kumar,1800,10,3,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+26,Primeguard Ds 15 Mg Tablet 7(7.00 No),Azithromycin 500 MG,4,11.94,46.72,79.16
+25,Artemax 40/240 Mg Tablet 6(6.00 No),Hydroxychloroquine 200 MG,7,30.24,37.76,18.58
+15,Symmetry 500 Mg Tablet Dr 10(10.00 No),Artemether + Lumefantrine 80/480 MG,6,45.36,50.4,178.44
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ How many doctors are there?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-09 00:35:02 [INFO] Executing Step 3: CodeGenerator
+2024-10-09 00:35:04 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:35:04 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Isha Bhatt,1200,15,1,2
+Dr. Priya Gupta,2000,25,2,1
+Dr. Manish Kumar,1800,10,3,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+26,Primeguard Ds 15 Mg Tablet 7(7.00 No),Azithromycin 500 MG,4,11.94,46.72,79.16
+25,Artemax 40/240 Mg Tablet 6(6.00 No),Hydroxychloroquine 200 MG,7,30.24,37.76,18.58
+15,Symmetry 500 Mg Tablet Dr 10(10.00 No),Artemether + Lumefantrine 80/480 MG,6,45.36,50.4,178.44
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ How many doctors are there?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-09 00:35:04 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+num_doctors = len(dfs[0])
+
+# Declare result var
+result = { "type": "number", "value": num_doctors }
+            ```
+            
+2024-10-09 00:35:04 [INFO] Executing Step 4: CachePopulation
+2024-10-09 00:35:04 [INFO] Executing Step 5: CodeCleaning
+2024-10-09 00:35:04 [INFO] 
+Code running:
+```
+num_doctors = len(dfs[0])
+result = {'type': 'number', 'value': num_doctors}
+        ```
+2024-10-09 00:35:04 [INFO] Executing Step 6: CodeExecution
+2024-10-09 00:35:04 [INFO] Executing Step 7: ResultValidation
+2024-10-09 00:35:04 [INFO] Answer: {'type': 'number', 'value': 10}
+2024-10-09 00:35:04 [INFO] Executing Step 8: ResultParsing
+2024-10-09 00:36:14 [INFO] Question: Draw bar chat for  doctor name and visit done
+2024-10-09 00:36:14 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2024-10-09 00:36:14 [INFO] Prompt ID: 450d2f38-24d9-43fa-93b6-0119a5bdf2c6
+2024-10-09 00:36:14 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-09 00:36:14 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-09 00:36:14 [INFO] Executing Step 1: CacheLookup
+2024-10-09 00:36:14 [INFO] Executing Step 2: PromptGeneration
+2024-10-09 00:36:14 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Manish Kumar,1200,20,1,1
+Dr. Vivek Singh,750,15,3,2
+Dr. Lakshmi Menon,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Medisol 500 Mg Tablet 5(5.00 No),Hydroxychloroquine 200 MG,3,63.07,122.4,154.56
+21,Artemax 40/240 Mg Tablet 6(6.00 No),Metoprolol 25 MG ER,4,18.0,93.12,15.01
+17,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,15,11.94,76.45,78.22
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Draw bar chat for  doctor name and visit done
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-09 00:36:14 [INFO] Executing Step 3: CodeGenerator
+2024-10-09 00:36:17 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:36:17 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Manish Kumar,1200,20,1,1
+Dr. Vivek Singh,750,15,3,2
+Dr. Lakshmi Menon,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Medisol 500 Mg Tablet 5(5.00 No),Hydroxychloroquine 200 MG,3,63.07,122.4,154.56
+21,Artemax 40/240 Mg Tablet 6(6.00 No),Metoprolol 25 MG ER,4,18.0,93.12,15.01
+17,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,15,11.94,76.45,78.22
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Draw bar chat for  doctor name and visit done
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-09 00:36:17 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+dfs = [pd.DataFrame({
+    'Doctor Name': ['Dr. Manish Kumar', 'Dr. Vivek Singh', 'Dr. Lakshmi Menon'],
+    'Value Written (Rs)': [1200, 750, 900],
+    'Distance (km)': [20, 15, 22],
+    'Visit Frequency Required': [1, 3, 2],
+    'Visit done': [1, 2, 0]
+})]
+
+# Draw bar chart for doctor name and visit done
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# Save the plot as a PNG file
+plt.savefig('doctor_visit_frequency.png')
+
+# Declare result var
+result = {"type": "plot", "value": "doctor_visit_frequency.png"}
+            ```
+            
+2024-10-09 00:36:17 [INFO] Executing Step 4: CachePopulation
+2024-10-09 00:36:17 [INFO] Executing Step 5: CodeCleaning
+2024-10-09 00:36:17 [INFO] Saving charts to C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\exports\charts\temp_chart.png
+2024-10-09 00:36:17 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+        ```
+2024-10-09 00:36:17 [INFO] Executing Step 6: CodeExecution
+2024-10-09 00:36:17 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+2024-10-09 00:36:17 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-09 00:36:17 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:36:17 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:36:17 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Manish Kumar,1200,20,1,1
+Dr. Vivek Singh,750,15,3,2
+Dr. Lakshmi Menon,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Medisol 500 Mg Tablet 5(5.00 No),Hydroxychloroquine 200 MG,3,63.07,122.4,154.56
+21,Artemax 40/240 Mg Tablet 6(6.00 No),Metoprolol 25 MG ER,4,18.0,93.12,15.01
+17,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,15,11.94,76.45,78.22
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw bar chat for  doctor name and visit done
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:36:17 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:36:18 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:36:18 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Manish Kumar,1200,20,1,1
+Dr. Vivek Singh,750,15,3,2
+Dr. Lakshmi Menon,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Medisol 500 Mg Tablet 5(5.00 No),Hydroxychloroquine 200 MG,3,63.07,122.4,154.56
+21,Artemax 40/240 Mg Tablet 6(6.00 No),Metoprolol 25 MG ER,4,18.0,93.12,15.01
+17,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,15,11.94,76.45,78.22
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw bar chat for  doctor name and visit done
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:36:18 [INFO] Code generated:
+            ```
+            plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+            ```
+            
+2024-10-09 00:36:18 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:36:18 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+        ```
+2024-10-09 00:36:18 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2024-10-09 00:36:18 [WARNING] Failed to execute code retrying with a correction framework [retry number: 2]
+2024-10-09 00:36:18 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:36:18 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:36:18 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Manish Kumar,1200,20,1,1
+Dr. Vivek Singh,750,15,3,2
+Dr. Lakshmi Menon,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Medisol 500 Mg Tablet 5(5.00 No),Hydroxychloroquine 200 MG,3,63.07,122.4,154.56
+21,Artemax 40/240 Mg Tablet 6(6.00 No),Metoprolol 25 MG ER,4,18.0,93.12,15.01
+17,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,15,11.94,76.45,78.22
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw bar chat for  doctor name and visit done
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:36:18 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:36:19 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:36:19 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Manish Kumar,1200,20,1,1
+Dr. Vivek Singh,750,15,3,2
+Dr. Lakshmi Menon,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Medisol 500 Mg Tablet 5(5.00 No),Hydroxychloroquine 200 MG,3,63.07,122.4,154.56
+21,Artemax 40/240 Mg Tablet 6(6.00 No),Metoprolol 25 MG ER,4,18.0,93.12,15.01
+17,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,15,11.94,76.45,78.22
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw bar chat for  doctor name and visit done
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:36:19 [INFO] Code generated:
+            ```
+            import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+            ```
+            
+2024-10-09 00:36:19 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:36:19 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+        ```
+2024-10-09 00:36:20 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2024-10-09 00:36:20 [WARNING] Failed to execute code retrying with a correction framework [retry number: 3]
+2024-10-09 00:36:20 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:36:20 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:36:20 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Manish Kumar,1200,20,1,1
+Dr. Vivek Singh,750,15,3,2
+Dr. Lakshmi Menon,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Medisol 500 Mg Tablet 5(5.00 No),Hydroxychloroquine 200 MG,3,63.07,122.4,154.56
+21,Artemax 40/240 Mg Tablet 6(6.00 No),Metoprolol 25 MG ER,4,18.0,93.12,15.01
+17,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,15,11.94,76.45,78.22
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw bar chat for  doctor name and visit done
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:36:20 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:36:21 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:36:21 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Manish Kumar,1200,20,1,1
+Dr. Vivek Singh,750,15,3,2
+Dr. Lakshmi Menon,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Medisol 500 Mg Tablet 5(5.00 No),Hydroxychloroquine 200 MG,3,63.07,122.4,154.56
+21,Artemax 40/240 Mg Tablet 6(6.00 No),Metoprolol 25 MG ER,4,18.0,93.12,15.01
+17,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,15,11.94,76.45,78.22
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw bar chat for  doctor name and visit done
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:36:21 [INFO] Code generated:
+            ```
+            plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+            ```
+            
+2024-10-09 00:36:21 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:36:21 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[0]['Doctor Name'], dfs[0]['Visit done'], color='skyblue')
+plt.xlabel('Doctor Name')
+plt.ylabel('Visit done')
+plt.title('Doctor Visit Frequency')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+        ```
+2024-10-09 00:36:21 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2024-10-09 00:36:21 [ERROR] Pipeline failed on step 6: No result returned
+2024-10-09 00:37:15 [INFO] Question: Draw bar chat for margin for retailer and product name
+
+2024-10-09 00:37:15 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2024-10-09 00:37:15 [INFO] Prompt ID: 99ae58d8-6add-4945-8c31-483343f619bc
+2024-10-09 00:37:15 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-09 00:37:15 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-09 00:37:15 [INFO] Executing Step 1: CacheLookup
+2024-10-09 00:37:15 [INFO] Executing Step 2: PromptGeneration
+2024-10-09 00:37:15 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Ravi Joshi,3000,5,1,2
+Dr. Neeta Verma,500,7,2,0
+Dr. Rohit Patel,1600,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+1,Rheumex 200 Mg Tablet 15(15.00 No),Metoclopramide 10 MG,7,114.71,50.4,130.37
+24,Artemax 20/120 Mg Tablet Dt 6(6.00 No),Metoprolol 50 MG ER,5,11.94,46.72,84.94
+11,Ramicor 2.5 Mg Capsule 10(10.00 No),Ondansetron 4 MG MD,15,68.8,29.6,52.86
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Draw bar chat for margin for retailer and product name
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-09 00:37:15 [INFO] Executing Step 3: CodeGenerator
+2024-10-09 00:37:22 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:37:22 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Ravi Joshi,3000,5,1,2
+Dr. Neeta Verma,500,7,2,0
+Dr. Rohit Patel,1600,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+1,Rheumex 200 Mg Tablet 15(15.00 No),Metoclopramide 10 MG,7,114.71,50.4,130.37
+24,Artemax 20/120 Mg Tablet Dt 6(6.00 No),Metoprolol 50 MG ER,5,11.94,46.72,84.94
+11,Ramicor 2.5 Mg Capsule 10(10.00 No),Ondansetron 4 MG MD,15,68.8,29.6,52.86
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Draw bar chat for margin for retailer and product name
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-09 00:37:22 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+dfs = [pd.DataFrame({
+    'Doctor Name': ['Dr. Ravi Joshi', 'Dr. Neeta Verma', 'Dr. Rohit Patel'],
+    'Value Written (Rs)': [3000, 500, 1600],
+    'Distance (km)': [5, 7, 22],
+    'Visit Frequency Required': [1, 2, 3],
+    'Visit done': [2, 0, 1]
+}), pd.DataFrame({
+    'Sl. No.': [1, 24, 11],
+    'Name of the Product (New)': ['Rheumex 200 Mg Tablet 15(15.00 No)', 'Artemax 20/120 Mg Tablet Dt 6(6.00 No)', 'Ramicor 2.5 Mg Capsule 10(10.00 No)'],
+    'Composition Approved By Drug Control Authorities (New)': ['Metoclopramide 10 MG', 'Metoprolol 50 MG ER', 'Ondansetron 4 MG MD'],
+    'Pack Size': [7, 5, 15],
+    'Price to Stockist (inclusive of E.D) (Rs.)': [114.71, 11.94, 68.8],
+    'Price to Retailer (inclusive of E.D) (Rs.)': [50.4, 46.72, 29.6],
+    'Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)': [130.37, 84.94, 52.86]
+})]
+
+# Draw bar chat for margin for retailer and product name
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# Save the plot as png
+plt.savefig('margin_for_retailer.png')
+
+# Declare result var
+result = {"type": "plot", "value": "margin_for_retailer.png"}
+            ```
+            
+2024-10-09 00:37:22 [INFO] Executing Step 4: CachePopulation
+2024-10-09 00:37:22 [INFO] Executing Step 5: CodeCleaning
+2024-10-09 00:37:22 [INFO] Saving charts to C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\exports\charts\temp_chart.png
+2024-10-09 00:37:22 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+        ```
+2024-10-09 00:37:22 [INFO] Executing Step 6: CodeExecution
+2024-10-09 00:37:22 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+2024-10-09 00:37:22 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-09 00:37:22 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:37:22 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:37:22 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Ravi Joshi,3000,5,1,2
+Dr. Neeta Verma,500,7,2,0
+Dr. Rohit Patel,1600,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+1,Rheumex 200 Mg Tablet 15(15.00 No),Metoclopramide 10 MG,7,114.71,50.4,130.37
+24,Artemax 20/120 Mg Tablet Dt 6(6.00 No),Metoprolol 50 MG ER,5,11.94,46.72,84.94
+11,Ramicor 2.5 Mg Capsule 10(10.00 No),Ondansetron 4 MG MD,15,68.8,29.6,52.86
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw bar chat for margin for retailer and product name
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:37:22 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:37:24 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:37:24 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Ravi Joshi,3000,5,1,2
+Dr. Neeta Verma,500,7,2,0
+Dr. Rohit Patel,1600,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+1,Rheumex 200 Mg Tablet 15(15.00 No),Metoclopramide 10 MG,7,114.71,50.4,130.37
+24,Artemax 20/120 Mg Tablet Dt 6(6.00 No),Metoprolol 50 MG ER,5,11.94,46.72,84.94
+11,Ramicor 2.5 Mg Capsule 10(10.00 No),Ondansetron 4 MG MD,15,68.8,29.6,52.86
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw bar chat for margin for retailer and product name
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:37:24 [INFO] Code generated:
+            ```
+            plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+            ```
+            
+2024-10-09 00:37:24 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:37:24 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+        ```
+2024-10-09 00:37:24 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2024-10-09 00:37:24 [WARNING] Failed to execute code retrying with a correction framework [retry number: 2]
+2024-10-09 00:37:24 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:37:24 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:37:24 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Ravi Joshi,3000,5,1,2
+Dr. Neeta Verma,500,7,2,0
+Dr. Rohit Patel,1600,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+1,Rheumex 200 Mg Tablet 15(15.00 No),Metoclopramide 10 MG,7,114.71,50.4,130.37
+24,Artemax 20/120 Mg Tablet Dt 6(6.00 No),Metoprolol 50 MG ER,5,11.94,46.72,84.94
+11,Ramicor 2.5 Mg Capsule 10(10.00 No),Ondansetron 4 MG MD,15,68.8,29.6,52.86
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw bar chat for margin for retailer and product name
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:37:24 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:37:26 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:37:26 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Ravi Joshi,3000,5,1,2
+Dr. Neeta Verma,500,7,2,0
+Dr. Rohit Patel,1600,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+1,Rheumex 200 Mg Tablet 15(15.00 No),Metoclopramide 10 MG,7,114.71,50.4,130.37
+24,Artemax 20/120 Mg Tablet Dt 6(6.00 No),Metoprolol 50 MG ER,5,11.94,46.72,84.94
+11,Ramicor 2.5 Mg Capsule 10(10.00 No),Ondansetron 4 MG MD,15,68.8,29.6,52.86
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw bar chat for margin for retailer and product name
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:37:26 [INFO] Code generated:
+            ```
+            import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+            ```
+            
+2024-10-09 00:37:26 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:37:26 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+        ```
+2024-10-09 00:37:26 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2024-10-09 00:37:26 [WARNING] Failed to execute code retrying with a correction framework [retry number: 3]
+2024-10-09 00:37:26 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:37:26 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:37:26 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Ravi Joshi,3000,5,1,2
+Dr. Neeta Verma,500,7,2,0
+Dr. Rohit Patel,1600,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+1,Rheumex 200 Mg Tablet 15(15.00 No),Metoclopramide 10 MG,7,114.71,50.4,130.37
+24,Artemax 20/120 Mg Tablet Dt 6(6.00 No),Metoprolol 50 MG ER,5,11.94,46.72,84.94
+11,Ramicor 2.5 Mg Capsule 10(10.00 No),Ondansetron 4 MG MD,15,68.8,29.6,52.86
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw bar chat for margin for retailer and product name
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:37:26 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:37:28 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:37:28 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Ravi Joshi,3000,5,1,2
+Dr. Neeta Verma,500,7,2,0
+Dr. Rohit Patel,1600,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+1,Rheumex 200 Mg Tablet 15(15.00 No),Metoclopramide 10 MG,7,114.71,50.4,130.37
+24,Artemax 20/120 Mg Tablet Dt 6(6.00 No),Metoprolol 50 MG ER,5,11.94,46.72,84.94
+11,Ramicor 2.5 Mg Capsule 10(10.00 No),Ondansetron 4 MG MD,15,68.8,29.6,52.86
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw bar chat for margin for retailer and product name
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:37:28 [INFO] Code generated:
+            ```
+            import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+            ```
+            
+2024-10-09 00:37:28 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:37:28 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'] - dfs[1]['Price to Stockist (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Margin for Retailer (Rs.)')
+plt.title('Margin for Retailer by Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+        ```
+2024-10-09 00:37:28 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2024-10-09 00:37:28 [ERROR] Pipeline failed on step 6: No result returned
+2024-10-09 00:39:05 [INFO] Question: Draw plotting
+
+2024-10-09 00:39:05 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2024-10-09 00:39:05 [INFO] Prompt ID: ea19fe3e-043d-4216-9444-f6ff496e9cf8
+2024-10-09 00:39:05 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-09 00:39:05 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-09 00:39:05 [INFO] Executing Step 1: CacheLookup
+2024-10-09 00:39:05 [INFO] Executing Step 2: PromptGeneration
+2024-10-09 00:39:05 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Isha Bhatt,1200,5,1,0
+Dr. Arjun Sharma,2100,18,2,1
+Dr. Lakshmi Menon,900,15,3,2
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Primeguard 2.5 Mg Tablet Dt 7(7.00 No),Artemether + Lumefantrine 20/120 MG DT,3,33.98,10.72,154.56
+22,Metrocron Xl 50 Mg Tablet 15(15.00 No),Ondansetron 4 MG MD,4,63.07,50.4,84.94
+16,Medisol 250 Mg Tablet 10(10.00 No),Glimepiride 2 MG,7,99.36,20.0,131.93
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Draw plotting
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-09 00:39:05 [INFO] Executing Step 3: CodeGenerator
+2024-10-09 00:39:07 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:39:07 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Isha Bhatt,1200,5,1,0
+Dr. Arjun Sharma,2100,18,2,1
+Dr. Lakshmi Menon,900,15,3,2
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Primeguard 2.5 Mg Tablet Dt 7(7.00 No),Artemether + Lumefantrine 20/120 MG DT,3,33.98,10.72,154.56
+22,Metrocron Xl 50 Mg Tablet 15(15.00 No),Ondansetron 4 MG MD,4,63.07,50.4,84.94
+16,Medisol 250 Mg Tablet 10(10.00 No),Glimepiride 2 MG,7,99.36,20.0,131.93
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Draw plotting
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-09 00:39:07 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+# Plotting
+plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance (km)'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('doctor_visits_analysis.png')
+
+# Declare result var
+result = {"type": "plot", "value": "doctor_visits_analysis.png"}
+            ```
+            
+2024-10-09 00:39:07 [INFO] Executing Step 4: CachePopulation
+2024-10-09 00:39:07 [INFO] Executing Step 5: CodeCleaning
+2024-10-09 00:39:07 [INFO] Saving charts to C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\exports\charts\temp_chart.png
+2024-10-09 00:39:07 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance (km)'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+        ```
+2024-10-09 00:39:07 [INFO] Executing Step 6: CodeExecution
+2024-10-09 00:39:07 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 165, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5745, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5753, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Distance (km)'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\frame.py", line 3807, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3804, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Distance (km)'
+
+2024-10-09 00:39:07 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-09 00:39:07 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:39:07 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:39:07 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Isha Bhatt,1200,5,1,0
+Dr. Arjun Sharma,2100,18,2,1
+Dr. Lakshmi Menon,900,15,3,2
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Primeguard 2.5 Mg Tablet Dt 7(7.00 No),Artemether + Lumefantrine 20/120 MG DT,3,33.98,10.72,154.56
+22,Metrocron Xl 50 Mg Tablet 15(15.00 No),Ondansetron 4 MG MD,4,63.07,50.4,84.94
+16,Medisol 250 Mg Tablet 10(10.00 No),Glimepiride 2 MG,7,99.36,20.0,131.93
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw plotting
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance (km)'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 165, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5745, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5753, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Distance (km)'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\frame.py", line 3807, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3804, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Distance (km)'
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:39:07 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:39:09 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:39:09 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Isha Bhatt,1200,5,1,0
+Dr. Arjun Sharma,2100,18,2,1
+Dr. Lakshmi Menon,900,15,3,2
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Primeguard 2.5 Mg Tablet Dt 7(7.00 No),Artemether + Lumefantrine 20/120 MG DT,3,33.98,10.72,154.56
+22,Metrocron Xl 50 Mg Tablet 15(15.00 No),Ondansetron 4 MG MD,4,63.07,50.4,84.94
+16,Medisol 250 Mg Tablet 10(10.00 No),Glimepiride 2 MG,7,99.36,20.0,131.93
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw plotting
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance (km)'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 165, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5745, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5753, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Distance (km)'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\frame.py", line 3807, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3804, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Distance (km)'
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:39:09 [INFO] Code generated:
+            ```
+            plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+            ```
+            
+2024-10-09 00:39:09 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:39:09 [INFO] Saving charts to C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\exports\charts\temp_chart.png
+2024-10-09 00:39:09 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+        ```
+2024-10-09 00:39:09 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 165, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5745, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5753, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Distance'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\frame.py", line 3807, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3804, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Distance'
+
+2024-10-09 00:39:09 [WARNING] Failed to execute code retrying with a correction framework [retry number: 2]
+2024-10-09 00:39:09 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:39:09 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:39:09 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Isha Bhatt,1200,5,1,0
+Dr. Arjun Sharma,2100,18,2,1
+Dr. Lakshmi Menon,900,15,3,2
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Primeguard 2.5 Mg Tablet Dt 7(7.00 No),Artemether + Lumefantrine 20/120 MG DT,3,33.98,10.72,154.56
+22,Metrocron Xl 50 Mg Tablet 15(15.00 No),Ondansetron 4 MG MD,4,63.07,50.4,84.94
+16,Medisol 250 Mg Tablet 10(10.00 No),Glimepiride 2 MG,7,99.36,20.0,131.93
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw plotting
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 165, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5745, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5753, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Distance'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\frame.py", line 3807, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3804, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Distance'
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:39:09 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:39:12 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:39:12 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Isha Bhatt,1200,5,1,0
+Dr. Arjun Sharma,2100,18,2,1
+Dr. Lakshmi Menon,900,15,3,2
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Primeguard 2.5 Mg Tablet Dt 7(7.00 No),Artemether + Lumefantrine 20/120 MG DT,3,33.98,10.72,154.56
+22,Metrocron Xl 50 Mg Tablet 15(15.00 No),Ondansetron 4 MG MD,4,63.07,50.4,84.94
+16,Medisol 250 Mg Tablet 10(10.00 No),Glimepiride 2 MG,7,99.36,20.0,131.93
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw plotting
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 165, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5745, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5753, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Distance'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\frame.py", line 3807, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3804, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Distance'
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:39:12 [INFO] Code generated:
+            ```
+            plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance (km)'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+            ```
+            
+2024-10-09 00:39:12 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:39:12 [INFO] Saving charts to C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\exports\charts\temp_chart.png
+2024-10-09 00:39:12 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance (km)'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+        ```
+2024-10-09 00:39:12 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 165, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5745, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5753, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Distance (km)'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\frame.py", line 3807, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3804, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Distance (km)'
+
+2024-10-09 00:39:12 [WARNING] Failed to execute code retrying with a correction framework [retry number: 3]
+2024-10-09 00:39:12 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:39:12 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:39:12 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Isha Bhatt,1200,5,1,0
+Dr. Arjun Sharma,2100,18,2,1
+Dr. Lakshmi Menon,900,15,3,2
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Primeguard 2.5 Mg Tablet Dt 7(7.00 No),Artemether + Lumefantrine 20/120 MG DT,3,33.98,10.72,154.56
+22,Metrocron Xl 50 Mg Tablet 15(15.00 No),Ondansetron 4 MG MD,4,63.07,50.4,84.94
+16,Medisol 250 Mg Tablet 10(10.00 No),Glimepiride 2 MG,7,99.36,20.0,131.93
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw plotting
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance (km)'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 165, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5745, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5753, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Distance (km)'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\frame.py", line 3807, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3804, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Distance (km)'
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:39:12 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:39:15 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:39:15 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Isha Bhatt,1200,5,1,0
+Dr. Arjun Sharma,2100,18,2,1
+Dr. Lakshmi Menon,900,15,3,2
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+13,Primeguard 2.5 Mg Tablet Dt 7(7.00 No),Artemether + Lumefantrine 20/120 MG DT,3,33.98,10.72,154.56
+22,Metrocron Xl 50 Mg Tablet 15(15.00 No),Ondansetron 4 MG MD,4,63.07,50.4,84.94
+16,Medisol 250 Mg Tablet 10(10.00 No),Glimepiride 2 MG,7,99.36,20.0,131.93
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw plotting
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance (km)'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 165, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5745, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5753, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Distance (km)'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\frame.py", line 3807, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3804, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Distance (km)'
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:39:15 [INFO] Code generated:
+            ```
+            import matplotlib.pyplot as plt
+
+dfs = [df0, df1]  # assuming df0 and df1 are the dataframes provided
+
+plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+            ```
+            
+2024-10-09 00:39:15 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:39:15 [INFO] Saving charts to C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\exports\charts\temp_chart.png
+2024-10-09 00:39:15 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+for df in dfs:
+    plt.scatter(df['Distance'], df['Value Written (Rs)'], label=df['Doctor Name'])
+plt.xlabel('Distance (km)')
+plt.ylabel('Value Written (Rs)')
+plt.title('Doctor Visits Analysis')
+plt.legend()
+plt.grid(True)
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+        ```
+2024-10-09 00:39:15 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 165, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5745, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 5753, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Distance'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\frame.py", line 3807, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3804, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Distance'
+
+2024-10-09 00:39:15 [ERROR] Pipeline failed on step 6: 'Distance'
+2024-10-09 00:41:40 [INFO] Question: Draw charts
+
+2024-10-09 00:41:40 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2024-10-09 00:41:40 [INFO] Prompt ID: 95ed84d0-e525-4d38-b73a-ecbf0b90ca16
+2024-10-09 00:41:40 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-09 00:41:40 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-09 00:41:40 [INFO] Executing Step 1: CacheLookup
+2024-10-09 00:41:40 [INFO] Executing Step 2: PromptGeneration
+2024-10-09 00:41:40 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Rohit Patel,900,10,1,2
+Dr. Vivek Singh,750,7,2,0
+Dr. Anjali Rao,2100,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+12,Clarithro 250 Mg Tablet 4(4.00 No),Glimepiride 1 MG,15,68.8,86.59,154.56
+6,Ramicor 5 Mg Capsule 10(10.00 No),Artemether + Lumefantrine 80/480 MG,4,77.93,20.0,28.0
+19,Digestin 10 Mg Tablet 10(10.00 No),Ramipril 2.5 MG,7,30.24,76.45,98.11
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Draw charts
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-09 00:41:40 [INFO] Executing Step 3: CodeGenerator
+2024-10-09 00:41:42 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:41:42 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Rohit Patel,900,10,1,2
+Dr. Vivek Singh,750,7,2,0
+Dr. Anjali Rao,2100,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+12,Clarithro 250 Mg Tablet 4(4.00 No),Glimepiride 1 MG,15,68.8,86.59,154.56
+6,Ramicor 5 Mg Capsule 10(10.00 No),Artemether + Lumefantrine 80/480 MG,4,77.93,20.0,28.0
+19,Digestin 10 Mg Tablet 10(10.00 No),Ramipril 2.5 MG,7,30.24,76.45,98.11
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Draw charts
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-09 00:41:42 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'doctor_value_{i}.png')
+
+# Declare result var:
+result = { "type": "string", "value": "Charts have been generated for each dataframe." }
+            ```
+            
+2024-10-09 00:41:42 [INFO] Executing Step 4: CachePopulation
+2024-10-09 00:41:42 [INFO] Executing Step 5: CodeCleaning
+2024-10-09 00:41:42 [INFO] Saving charts to C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\exports\charts\temp_chart.png
+2024-10-09 00:41:42 [INFO] 
+Code running:
+```
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': 'Charts have been generated for each dataframe.'}
+        ```
+2024-10-09 00:41:42 [INFO] Executing Step 6: CodeExecution
+2024-10-09 00:41:42 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+AttributeError: 'NoneType' object has no attribute 'plot'
+
+2024-10-09 00:41:42 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-09 00:41:42 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:41:42 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:41:42 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Rohit Patel,900,10,1,2
+Dr. Vivek Singh,750,7,2,0
+Dr. Anjali Rao,2100,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+12,Clarithro 250 Mg Tablet 4(4.00 No),Glimepiride 1 MG,15,68.8,86.59,154.56
+6,Ramicor 5 Mg Capsule 10(10.00 No),Artemether + Lumefantrine 80/480 MG,4,77.93,20.0,28.0
+19,Digestin 10 Mg Tablet 10(10.00 No),Ramipril 2.5 MG,7,30.24,76.45,98.11
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw charts
+
+
+You generated this python code:
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': 'Charts have been generated for each dataframe.'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+AttributeError: 'NoneType' object has no attribute 'plot'
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:41:42 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:41:43 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:41:43 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Rohit Patel,900,10,1,2
+Dr. Vivek Singh,750,7,2,0
+Dr. Anjali Rao,2100,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+12,Clarithro 250 Mg Tablet 4(4.00 No),Glimepiride 1 MG,15,68.8,86.59,154.56
+6,Ramicor 5 Mg Capsule 10(10.00 No),Artemether + Lumefantrine 80/480 MG,4,77.93,20.0,28.0
+19,Digestin 10 Mg Tablet 10(10.00 No),Ramipril 2.5 MG,7,30.24,76.45,98.11
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw charts
+
+
+You generated this python code:
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': 'Charts have been generated for each dataframe.'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+AttributeError: 'NoneType' object has no attribute 'plot'
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:41:43 [INFO] Code generated:
+            ```
+            import matplotlib.pyplot as plt
+
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart_{i}.png')
+
+result = {'type': 'string', 'value': 'Charts have been generated for each dataframe.'}
+            ```
+            
+2024-10-09 00:41:43 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:41:43 [INFO] Saving charts to C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\exports\charts\temp_chart.png
+2024-10-09 00:41:43 [INFO] 
+Code running:
+```
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': 'Charts have been generated for each dataframe.'}
+        ```
+2024-10-09 00:41:43 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+AttributeError: 'NoneType' object has no attribute 'plot'
+
+2024-10-09 00:41:43 [WARNING] Failed to execute code retrying with a correction framework [retry number: 2]
+2024-10-09 00:41:43 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:41:43 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:41:43 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Rohit Patel,900,10,1,2
+Dr. Vivek Singh,750,7,2,0
+Dr. Anjali Rao,2100,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+12,Clarithro 250 Mg Tablet 4(4.00 No),Glimepiride 1 MG,15,68.8,86.59,154.56
+6,Ramicor 5 Mg Capsule 10(10.00 No),Artemether + Lumefantrine 80/480 MG,4,77.93,20.0,28.0
+19,Digestin 10 Mg Tablet 10(10.00 No),Ramipril 2.5 MG,7,30.24,76.45,98.11
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw charts
+
+
+You generated this python code:
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': 'Charts have been generated for each dataframe.'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+AttributeError: 'NoneType' object has no attribute 'plot'
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:41:43 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:41:45 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:41:45 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Rohit Patel,900,10,1,2
+Dr. Vivek Singh,750,7,2,0
+Dr. Anjali Rao,2100,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+12,Clarithro 250 Mg Tablet 4(4.00 No),Glimepiride 1 MG,15,68.8,86.59,154.56
+6,Ramicor 5 Mg Capsule 10(10.00 No),Artemether + Lumefantrine 80/480 MG,4,77.93,20.0,28.0
+19,Digestin 10 Mg Tablet 10(10.00 No),Ramipril 2.5 MG,7,30.24,76.45,98.11
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw charts
+
+
+You generated this python code:
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': 'Charts have been generated for each dataframe.'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+AttributeError: 'NoneType' object has no attribute 'plot'
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:41:45 [INFO] Code generated:
+            ```
+            import matplotlib.pyplot as plt
+
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart_{i}.png')
+
+result = {'type': 'string', 'value': 'Charts have been generated for each dataframe.'}
+            ```
+            
+2024-10-09 00:41:45 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:41:45 [INFO] Saving charts to C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\exports\charts\temp_chart.png
+2024-10-09 00:41:45 [INFO] 
+Code running:
+```
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': 'Charts have been generated for each dataframe.'}
+        ```
+2024-10-09 00:41:45 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+AttributeError: 'NoneType' object has no attribute 'plot'
+
+2024-10-09 00:41:45 [WARNING] Failed to execute code retrying with a correction framework [retry number: 3]
+2024-10-09 00:41:45 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:41:45 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:41:45 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Rohit Patel,900,10,1,2
+Dr. Vivek Singh,750,7,2,0
+Dr. Anjali Rao,2100,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+12,Clarithro 250 Mg Tablet 4(4.00 No),Glimepiride 1 MG,15,68.8,86.59,154.56
+6,Ramicor 5 Mg Capsule 10(10.00 No),Artemether + Lumefantrine 80/480 MG,4,77.93,20.0,28.0
+19,Digestin 10 Mg Tablet 10(10.00 No),Ramipril 2.5 MG,7,30.24,76.45,98.11
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw charts
+
+
+You generated this python code:
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': 'Charts have been generated for each dataframe.'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+AttributeError: 'NoneType' object has no attribute 'plot'
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:41:45 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:41:47 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:41:47 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Rohit Patel,900,10,1,2
+Dr. Vivek Singh,750,7,2,0
+Dr. Anjali Rao,2100,22,3,1
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+12,Clarithro 250 Mg Tablet 4(4.00 No),Glimepiride 1 MG,15,68.8,86.59,154.56
+6,Ramicor 5 Mg Capsule 10(10.00 No),Artemether + Lumefantrine 80/480 MG,4,77.93,20.0,28.0
+19,Digestin 10 Mg Tablet 10(10.00 No),Ramipril 2.5 MG,7,30.24,76.45,98.11
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Draw charts
+
+
+You generated this python code:
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': 'Charts have been generated for each dataframe.'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+AttributeError: 'NoneType' object has no attribute 'plot'
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:41:47 [INFO] Code generated:
+            ```
+            import matplotlib.pyplot as plt
+
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart_{i}.png')
+
+result = {'type': 'string', 'value': 'Charts have been generated for each dataframe.'}
+            ```
+            
+2024-10-09 00:41:47 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:41:47 [INFO] Saving charts to C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\exports\charts\temp_chart.png
+2024-10-09 00:41:47 [INFO] 
+Code running:
+```
+for i, df in enumerate(dfs):
+    plt.figure()
+    df.plot(kind='bar', x='Doctor Name', y='Value Written (Rs)', title=f'Doctor vs Value Written - {i}')
+    plt.savefig(f'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': 'Charts have been generated for each dataframe.'}
+        ```
+2024-10-09 00:41:47 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+AttributeError: 'NoneType' object has no attribute 'plot'
+
+2024-10-09 00:41:47 [ERROR] Pipeline failed on step 6: 'NoneType' object has no attribute 'plot'
+2024-10-09 00:43:04 [INFO] Question: show me the chat of product_name and price_to_retailer
+
+2024-10-09 00:43:04 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2024-10-09 00:43:04 [INFO] Prompt ID: 15c6de5d-ea71-4da6-ab51-f5276d81809e
+2024-10-09 00:43:04 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-09 00:43:04 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-09 00:43:04 [INFO] Executing Step 1: CacheLookup
+2024-10-09 00:43:04 [INFO] Executing Step 2: PromptGeneration
+2024-10-09 00:43:04 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Lakshmi Menon,1200,7,3,2
+Dr. Manish Kumar,900,12,2,1
+Dr. Rohit Patel,2000,20,1,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+22,Glisulin 1 Mg Tablet 10(10.00 No),Ondansetron 8 MG,10,84.81,10.72,18.58
+10,Clarithro 250 Mg Tablet 4(4.00 No),Artemether + Lumefantrine 80/480 MG,3,30.24,20.0,52.19
+28,Azifort 250 Mg Tablet 6(6.00 No),Artemether + Lumefantrine 40/240 MG,4,33.98,13.27,131.93
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ show me the chat of product_name and price_to_retailer
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-09 00:43:04 [INFO] Executing Step 3: CodeGenerator
+2024-10-09 00:43:05 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:43:05 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Lakshmi Menon,1200,7,3,2
+Dr. Manish Kumar,900,12,2,1
+Dr. Rohit Patel,2000,20,1,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+22,Glisulin 1 Mg Tablet 10(10.00 No),Ondansetron 8 MG,10,84.81,10.72,18.58
+10,Clarithro 250 Mg Tablet 4(4.00 No),Artemether + Lumefantrine 80/480 MG,3,30.24,20.0,52.19
+28,Azifort 250 Mg Tablet 6(6.00 No),Artemether + Lumefantrine 40/240 MG,4,33.98,13.27,131.93
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ show me the chat of product_name and price_to_retailer
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-09 00:43:05 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+product_name_price = pd.concat([dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)']], axis=1)
+
+# Declare result var
+result = {"type": "dataframe", "value": product_name_price}
+            ```
+            
+2024-10-09 00:43:05 [INFO] Executing Step 4: CachePopulation
+2024-10-09 00:43:05 [INFO] Executing Step 5: CodeCleaning
+2024-10-09 00:43:05 [INFO] 
+Code running:
+```
+product_name_price = pd.concat([dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)']], axis=1)
+result = {'type': 'dataframe', 'value': product_name_price}
+        ```
+2024-10-09 00:43:05 [INFO] Executing Step 6: CodeExecution
+2024-10-09 00:43:05 [INFO] Executing Step 7: ResultValidation
+2024-10-09 00:43:05 [INFO] Answer: {'type': 'dataframe', 'value':                     Name of the Product (New)  Price to Retailer (inclusive of E.D) (Rs.)
+0      Symmetry 500 Mg Tablet Dr 10(10.00 No)                                       37.76
+1          Medisol 250 Mg Tablet 10(10.00 No)                                       93.12
+2            Medisol 500 Mg Tablet 5(5.00 No)                                       94.23
+3            Azifort 250 Mg Tablet 6(6.00 No)                                       55.87
+4            Azifort 500 Mg Tablet 3(3.00 No)                                       56.54
+5          Cardiwell 5 Mg Tablet 10(10.00 No)                                       20.00
+6          Rheumex 200 Mg Tablet 10(10.00 No)                                       50.80
+7      Primeguard 2.5 Mg Tablet Dt 7(7.00 No)                                        9.74
+8         Primeguard 7.5 Mg Tablet 7(7.00 No)                                       13.27
+9          Digestin 10 Mg Tablet 10(10.00 No)                                       10.72
+10    Setronix Md 4 Mg Tablet Md 10(10.00 No)                                       41.04
+11          Setronix 4 Mg Tablet 10(10.00 No)                                       41.04
+12          Setronix 8 Mg Tablet 10(10.00 No)                                       66.47
+13         Clarithro 250 Mg Tablet 4(4.00 No)                                       76.45
+14         Clarithro 500 Mg Tablet 4(4.00 No)                                      127.46
+15          Glisulin 1 Mg Tablet 10(10.00 No)                                       29.60
+16          Glisulin 2 Mg Tablet 10(10.00 No)                                       46.32
+17         Rheumex 400 Mg Tablet 10(10.00 No)                                      110.40
+18        Innoquin 400 Mg Tablet 10(10.00 No)                                      110.40
+19     Artemax 20/120 Mg Tablet Dt 6(6.00 No)                                       60.67
+20        Artemax 40/240 Mg Tablet 6(6.00 No)                                       86.59
+21        Artemax 80/480 Mg Tablet 6(6.00 No)                                      122.40
+22        Ramicor 2.5 Mg Capsule 10(10.00 No)                                       37.28
+23          Ramicor 5 Mg Capsule 10(10.00 No)                                       57.44
+24     Metrocron Xl 25 Mg Tablet 15(15.00 No)                                       50.40
+25     Metrocron Xl 50 Mg Tablet 15(15.00 No)                                       70.08
+26  Cardiwell Xl 25 Mg Tablet Xl 10(10.00 No)                                       33.60
+27  Cardiwell Xl 50 Mg Tablet Xl 10(10.00 No)                                       46.72
+28      Primeguard Ds 15 Mg Tablet 7(7.00 No)                                       28.73
+29         Rheumex 200 Mg Tablet 15(15.00 No)                                       76.20}
+2024-10-09 00:43:05 [INFO] Executing Step 8: ResultParsing
+2024-10-09 00:43:23 [INFO] Question: show me the  bar chat of product_name and price_to_retailer
+
+2024-10-09 00:43:23 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2024-10-09 00:43:23 [INFO] Prompt ID: 32880df3-781e-4413-afdf-2fb4753661bc
+2024-10-09 00:43:23 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-09 00:43:23 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-09 00:43:23 [INFO] Executing Step 1: CacheLookup
+2024-10-09 00:43:23 [INFO] Executing Step 2: PromptGeneration
+2024-10-09 00:43:23 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Anjali Rao,1200,22,1,1
+Dr. Isha Bhatt,3000,5,3,2
+Dr. Priya Gupta,2000,7,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+29,Primeguard Ds 15 Mg Tablet 7(7.00 No),Primaquine 7.5 MG,7,59.82,46.72,131.93
+30,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,5,33.55,33.6,107.03
+28,Medisol 250 Mg Tablet 10(10.00 No),Ondansetron 8 MG,15,18.0,20.0,47.04
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ show me the  bar chat of product_name and price_to_retailer
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-09 00:43:23 [INFO] Executing Step 3: CodeGenerator
+2024-10-09 00:43:29 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:43:29 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Anjali Rao,1200,22,1,1
+Dr. Isha Bhatt,3000,5,3,2
+Dr. Priya Gupta,2000,7,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+29,Primeguard Ds 15 Mg Tablet 7(7.00 No),Primaquine 7.5 MG,7,59.82,46.72,131.93
+30,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,5,33.55,33.6,107.03
+28,Medisol 250 Mg Tablet 10(10.00 No),Ondansetron 8 MG,15,18.0,20.0,47.04
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ show me the  bar chat of product_name and price_to_retailer
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-09 00:43:29 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+dfs = [
+    pd.DataFrame({
+        'Doctor Name': ['Dr. Anjali Rao', 'Dr. Isha Bhatt', 'Dr. Priya Gupta'],
+        'Value Written (Rs)': [1200, 3000, 2000],
+        'Distance (km)': [22, 5, 7],
+        'Visit Frequency Required': [1, 3, 2],
+        'Visit done': [1, 2, 0]
+    }),
+    pd.DataFrame({
+        'Sl. No.': [29, 30, 28],
+        'Name of the Product (New)': ['Primeguard Ds 15 Mg Tablet 7(7.00 No)', 'Rheumex 200 Mg Tablet 10(10.00 No)', 'Medisol 250 Mg Tablet 10(10.00 No)'],
+        'Composition Approved By Drug Control Authorities (New)': ['Primaquine 7.5 MG', 'Clarithromycin 250 MG', 'Ondansetron 8 MG'],
+        'Pack Size': [7, 10, 10],
+        'Price to Stockist (inclusive of E.D) (Rs.)': [59.82, 33.55, 18.0],
+        'Price to Retailer (inclusive of E.D) (Rs.)': [46.72, 33.6, 20.0],
+        'Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)': [131.93, 107.03, 47.04]
+    })
+]
+
+# Plotting bar chart
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+
+# Save the plot as a PNG file
+plt.savefig('product_price_chart.png')
+
+# Declare result var
+result = {"type": "plot", "value": "product_price_chart.png"}
+            ```
+            
+2024-10-09 00:43:29 [INFO] Executing Step 4: CachePopulation
+2024-10-09 00:43:29 [INFO] Executing Step 5: CodeCleaning
+2024-10-09 00:43:29 [INFO] Saving charts to C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\exports\charts\temp_chart.png
+2024-10-09 00:43:29 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+        ```
+2024-10-09 00:43:29 [INFO] Executing Step 6: CodeExecution
+2024-10-09 00:43:29 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+2024-10-09 00:43:29 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-09 00:43:29 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:43:29 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:43:29 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Anjali Rao,1200,22,1,1
+Dr. Isha Bhatt,3000,5,3,2
+Dr. Priya Gupta,2000,7,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+29,Primeguard Ds 15 Mg Tablet 7(7.00 No),Primaquine 7.5 MG,7,59.82,46.72,131.93
+30,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,5,33.55,33.6,107.03
+28,Medisol 250 Mg Tablet 10(10.00 No),Ondansetron 8 MG,15,18.0,20.0,47.04
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ show me the  bar chat of product_name and price_to_retailer
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:43:29 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:43:31 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:43:31 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Anjali Rao,1200,22,1,1
+Dr. Isha Bhatt,3000,5,3,2
+Dr. Priya Gupta,2000,7,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+29,Primeguard Ds 15 Mg Tablet 7(7.00 No),Primaquine 7.5 MG,7,59.82,46.72,131.93
+30,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,5,33.55,33.6,107.03
+28,Medisol 250 Mg Tablet 10(10.00 No),Ondansetron 8 MG,15,18.0,20.0,47.04
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ show me the  bar chat of product_name and price_to_retailer
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:43:31 [INFO] Code generated:
+            ```
+            import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+            ```
+            
+2024-10-09 00:43:31 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:43:31 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+        ```
+2024-10-09 00:43:31 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2024-10-09 00:43:31 [WARNING] Failed to execute code retrying with a correction framework [retry number: 2]
+2024-10-09 00:43:31 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:43:31 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:43:31 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Anjali Rao,1200,22,1,1
+Dr. Isha Bhatt,3000,5,3,2
+Dr. Priya Gupta,2000,7,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+29,Primeguard Ds 15 Mg Tablet 7(7.00 No),Primaquine 7.5 MG,7,59.82,46.72,131.93
+30,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,5,33.55,33.6,107.03
+28,Medisol 250 Mg Tablet 10(10.00 No),Ondansetron 8 MG,15,18.0,20.0,47.04
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ show me the  bar chat of product_name and price_to_retailer
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:43:31 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:43:33 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:43:33 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Anjali Rao,1200,22,1,1
+Dr. Isha Bhatt,3000,5,3,2
+Dr. Priya Gupta,2000,7,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+29,Primeguard Ds 15 Mg Tablet 7(7.00 No),Primaquine 7.5 MG,7,59.82,46.72,131.93
+30,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,5,33.55,33.6,107.03
+28,Medisol 250 Mg Tablet 10(10.00 No),Ondansetron 8 MG,15,18.0,20.0,47.04
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ show me the  bar chat of product_name and price_to_retailer
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:43:33 [INFO] Code generated:
+            ```
+            import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+            ```
+            
+2024-10-09 00:43:33 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:43:33 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+        ```
+2024-10-09 00:43:33 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2024-10-09 00:43:33 [WARNING] Failed to execute code retrying with a correction framework [retry number: 3]
+2024-10-09 00:43:33 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 00:43:33 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 00:43:33 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Anjali Rao,1200,22,1,1
+Dr. Isha Bhatt,3000,5,3,2
+Dr. Priya Gupta,2000,7,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+29,Primeguard Ds 15 Mg Tablet 7(7.00 No),Primaquine 7.5 MG,7,59.82,46.72,131.93
+30,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,5,33.55,33.6,107.03
+28,Medisol 250 Mg Tablet 10(10.00 No),Ondansetron 8 MG,15,18.0,20.0,47.04
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ show me the  bar chat of product_name and price_to_retailer
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+2024-10-09 00:43:34 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 00:43:36 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 00:43:36 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Anjali Rao,1200,22,1,1
+Dr. Isha Bhatt,3000,5,3,2
+Dr. Priya Gupta,2000,7,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+29,Primeguard Ds 15 Mg Tablet 7(7.00 No),Primaquine 7.5 MG,7,59.82,46.72,131.93
+30,Rheumex 200 Mg Tablet 10(10.00 No),Clarithromycin 250 MG,5,33.55,33.6,107.03
+28,Medisol 250 Mg Tablet 10(10.00 No),Ondansetron 8 MG,15,18.0,20.0,47.04
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ show me the  bar chat of product_name and price_to_retailer
+
+
+You generated this python code:
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 00:43:36 [INFO] Code generated:
+            ```
+            import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+            ```
+            
+2024-10-09 00:43:36 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 00:43:36 [INFO] 
+Code running:
+```
+plt.figure(figsize=(10, 6))
+plt.bar(dfs[1]['Name of the Product (New)'], dfs[1]['Price to Retailer (inclusive of E.D) (Rs.)'], color='skyblue')
+plt.xlabel('Product Name')
+plt.ylabel('Price to Retailer (Rs.)')
+plt.title('Price to Retailer for Different Products')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+        ```
+2024-10-09 00:43:36 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2024-10-09 00:43:36 [ERROR] Pipeline failed on step 6: No result returned
+2024-10-09 01:00:24 [INFO] Question: show me the  bar chat of Doctor Name vs Vaue Written (Rs)
+
+2024-10-09 01:00:24 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2024-10-09 01:00:24 [INFO] Prompt ID: 7d9cecaa-7674-450f-84de-8cf4158b90a2
+2024-10-09 01:00:24 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-09 01:00:24 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-09 01:00:24 [INFO] Executing Step 1: CacheLookup
+2024-10-09 01:00:24 [INFO] Executing Step 2: PromptGeneration
+2024-10-09 01:00:24 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Priya Gupta,3000,5,1,2
+Dr. Ravi Joshi,1500,10,3,1
+Dr. Vivek Singh,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+16,Ramicor 2.5 Mg Capsule 10(10.00 No),Glimepiride 1 MG,6,99.36,29.6,28.0
+8,Cardiwell Xl 25 Mg Tablet Xl 10(10.00 No),Glimepiride 2 MG,10,59.82,93.12,57.46
+10,Artemax 80/480 Mg Tablet 6(6.00 No),Ramipril 5 MG,4,18.0,37.76,84.94
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ show me the  bar chat of Doctor Name vs Vaue Written (Rs)
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-09 01:00:24 [INFO] Executing Step 3: CodeGenerator
+2024-10-09 01:00:26 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 01:00:26 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Priya Gupta,3000,5,1,2
+Dr. Ravi Joshi,1500,10,3,1
+Dr. Vivek Singh,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+16,Ramicor 2.5 Mg Capsule 10(10.00 No),Glimepiride 1 MG,6,99.36,29.6,28.0
+8,Cardiwell Xl 25 Mg Tablet Xl 10(10.00 No),Glimepiride 2 MG,10,59.82,93.12,57.46
+10,Artemax 80/480 Mg Tablet 6(6.00 No),Ramipril 5 MG,4,18.0,37.76,84.94
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ show me the  bar chat of Doctor Name vs Vaue Written (Rs)
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-09 01:00:26 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+df.plot.bar(x='Doctor Name', y='Value Written (Rs)', color='skyblue', figsize=(10, 6))
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# Save the plot as a png file
+plt.savefig('doctor_value_bar_chart.png')
+
+# Declare result var
+result = {"type": "plot", "value": "doctor_value_bar_chart.png"}
+            ```
+            
+2024-10-09 01:00:26 [INFO] Executing Step 4: CachePopulation
+2024-10-09 01:00:26 [INFO] Executing Step 5: CodeCleaning
+2024-10-09 01:00:26 [INFO] Saving charts to C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\exports\charts\temp_chart.png
+2024-10-09 01:00:26 [INFO] 
+Code running:
+```
+df = dfs[0]
+df.plot.bar(x='Doctor Name', y='Value Written (Rs)', color='skyblue', figsize=(10, 6))
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+        ```
+2024-10-09 01:00:26 [INFO] Executing Step 6: CodeExecution
+2024-10-09 01:00:26 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+2024-10-09 01:00:26 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-09 01:00:26 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 01:00:26 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 01:00:26 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Priya Gupta,3000,5,1,2
+Dr. Ravi Joshi,1500,10,3,1
+Dr. Vivek Singh,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+16,Ramicor 2.5 Mg Capsule 10(10.00 No),Glimepiride 1 MG,6,99.36,29.6,28.0
+8,Cardiwell Xl 25 Mg Tablet Xl 10(10.00 No),Glimepiride 2 MG,10,59.82,93.12,57.46
+10,Artemax 80/480 Mg Tablet 6(6.00 No),Ramipril 5 MG,4,18.0,37.76,84.94
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ show me the  bar chat of Doctor Name vs Vaue Written (Rs)
+
+
+You generated this python code:
+df = dfs[0]
+df.plot.bar(x='Doctor Name', y='Value Written (Rs)', color='skyblue', figsize=(10, 6))
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+
+Fix the python code above and return the new python code:
+2024-10-09 01:00:26 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 01:00:29 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 01:00:29 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Priya Gupta,3000,5,1,2
+Dr. Ravi Joshi,1500,10,3,1
+Dr. Vivek Singh,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+16,Ramicor 2.5 Mg Capsule 10(10.00 No),Glimepiride 1 MG,6,99.36,29.6,28.0
+8,Cardiwell Xl 25 Mg Tablet Xl 10(10.00 No),Glimepiride 2 MG,10,59.82,93.12,57.46
+10,Artemax 80/480 Mg Tablet 6(6.00 No),Ramipril 5 MG,4,18.0,37.76,84.94
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ show me the  bar chat of Doctor Name vs Vaue Written (Rs)
+
+
+You generated this python code:
+df = dfs[0]
+df.plot.bar(x='Doctor Name', y='Value Written (Rs)', color='skyblue', figsize=(10, 6))
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 01:00:29 [INFO] Code generated:
+            ```
+            import matplotlib.pyplot as plt
+
+df = dfs[0]
+plt.figure(figsize=(10, 6))
+plt.bar(df['Doctor Name'], df['Value Written (Rs)'], color='skyblue')
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+plt.show()
+            ```
+            
+2024-10-09 01:00:29 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 01:00:29 [INFO] Saving charts to C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\exports\charts\temp_chart.png
+2024-10-09 01:00:29 [INFO] 
+Code running:
+```
+df = dfs[0]
+plt.figure(figsize=(10, 6))
+plt.bar(df['Doctor Name'], df['Value Written (Rs)'], color='skyblue')
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+plt.show()
+        ```
+2024-10-09 01:00:29 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2024-10-09 01:00:29 [WARNING] Failed to execute code retrying with a correction framework [retry number: 2]
+2024-10-09 01:00:29 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 01:00:29 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 01:00:29 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Priya Gupta,3000,5,1,2
+Dr. Ravi Joshi,1500,10,3,1
+Dr. Vivek Singh,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+16,Ramicor 2.5 Mg Capsule 10(10.00 No),Glimepiride 1 MG,6,99.36,29.6,28.0
+8,Cardiwell Xl 25 Mg Tablet Xl 10(10.00 No),Glimepiride 2 MG,10,59.82,93.12,57.46
+10,Artemax 80/480 Mg Tablet 6(6.00 No),Ramipril 5 MG,4,18.0,37.76,84.94
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ show me the  bar chat of Doctor Name vs Vaue Written (Rs)
+
+
+You generated this python code:
+df = dfs[0]
+plt.figure(figsize=(10, 6))
+plt.bar(df['Doctor Name'], df['Value Written (Rs)'], color='skyblue')
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+2024-10-09 01:00:29 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 01:00:31 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 01:00:31 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Priya Gupta,3000,5,1,2
+Dr. Ravi Joshi,1500,10,3,1
+Dr. Vivek Singh,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+16,Ramicor 2.5 Mg Capsule 10(10.00 No),Glimepiride 1 MG,6,99.36,29.6,28.0
+8,Cardiwell Xl 25 Mg Tablet Xl 10(10.00 No),Glimepiride 2 MG,10,59.82,93.12,57.46
+10,Artemax 80/480 Mg Tablet 6(6.00 No),Ramipril 5 MG,4,18.0,37.76,84.94
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ show me the  bar chat of Doctor Name vs Vaue Written (Rs)
+
+
+You generated this python code:
+df = dfs[0]
+plt.figure(figsize=(10, 6))
+plt.bar(df['Doctor Name'], df['Value Written (Rs)'], color='skyblue')
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('C:/Users/utkar/OneDrive/Desktop/Lervis Enterprise/Lervis/exports/charts/temp_chart.png')
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 01:00:31 [INFO] Code generated:
+            ```
+            import matplotlib.pyplot as plt
+
+df = dfs[0]
+plt.figure(figsize=(10, 6))
+plt.bar(df['Doctor Name'], df['Value Written (Rs)'], color='skyblue')
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+            ```
+            
+2024-10-09 01:00:31 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 01:00:31 [INFO] 
+Code running:
+```
+df = dfs[0]
+plt.figure(figsize=(10, 6))
+plt.bar(df['Doctor Name'], df['Value Written (Rs)'], color='skyblue')
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+        ```
+2024-10-09 01:00:31 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2024-10-09 01:00:31 [WARNING] Failed to execute code retrying with a correction framework [retry number: 3]
+2024-10-09 01:00:31 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-09 01:00:31 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-09 01:00:31 [INFO] Using prompt: <dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Priya Gupta,3000,5,1,2
+Dr. Ravi Joshi,1500,10,3,1
+Dr. Vivek Singh,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+16,Ramicor 2.5 Mg Capsule 10(10.00 No),Glimepiride 1 MG,6,99.36,29.6,28.0
+8,Cardiwell Xl 25 Mg Tablet Xl 10(10.00 No),Glimepiride 2 MG,10,59.82,93.12,57.46
+10,Artemax 80/480 Mg Tablet 6(6.00 No),Ramipril 5 MG,4,18.0,37.76,84.94
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ show me the  bar chat of Doctor Name vs Vaue Written (Rs)
+
+
+You generated this python code:
+df = dfs[0]
+plt.figure(figsize=(10, 6))
+plt.bar(df['Doctor Name'], df['Value Written (Rs)'], color='skyblue')
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+2024-10-09 01:00:31 [INFO] Executing Step 1: CodeGenerator
+2024-10-09 01:00:32 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-09 01:00:32 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:10x5
+Doctor Name,Value Written (Rs),Distance (km),Visit Frequency Required,Visit done
+Dr. Priya Gupta,3000,5,1,2
+Dr. Ravi Joshi,1500,10,3,1
+Dr. Vivek Singh,900,22,2,0
+</dataframe>
+<dataframe>
+dfs[1]:30x7
+Sl. No.,Name of the Product (New),Composition Approved By Drug Control Authorities (New),Pack Size,Price to Stockist (inclusive of E.D) (Rs.),Price to Retailer (inclusive of E.D) (Rs.),Maximum Retail Price (inclusive of E.D & Taxes) (Rs.)
+16,Ramicor 2.5 Mg Capsule 10(10.00 No),Glimepiride 1 MG,6,99.36,29.6,28.0
+8,Cardiwell Xl 25 Mg Tablet Xl 10(10.00 No),Glimepiride 2 MG,10,59.82,93.12,57.46
+10,Artemax 80/480 Mg Tablet 6(6.00 No),Ramipril 5 MG,4,18.0,37.76,84.94
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ show me the  bar chat of Doctor Name vs Vaue Written (Rs)
+
+
+You generated this python code:
+df = dfs[0]
+plt.figure(figsize=(10, 6))
+plt.bar(df['Doctor Name'], df['Value Written (Rs)'], color='skyblue')
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-09 01:00:32 [INFO] Code generated:
+            ```
+            df = dfs[0]
+plt.figure(figsize=(10, 6))
+plt.bar(df['Doctor Name'], df['Value Written (Rs)'], color='skyblue')
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+            ```
+            
+2024-10-09 01:00:32 [INFO] Executing Step 2: CodeCleaning
+2024-10-09 01:00:32 [INFO] 
+Code running:
+```
+df = dfs[0]
+plt.figure(figsize=(10, 6))
+plt.bar(df['Doctor Name'], df['Value Written (Rs)'], color='skyblue')
+plt.title('Doctor Name vs Value Written (Rs)')
+plt.xlabel('Doctor Name')
+plt.ylabel('Value Written (Rs)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+        ```
+2024-10-09 01:00:32 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\utkar\OneDrive\Desktop\Interview_With_AI\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2024-10-09 01:00:32 [ERROR] Pipeline failed on step 6: No result returned
