@@ -21,7 +21,6 @@ nvidia = st.secrets.db_credentials.nvidia
 
 #--------------------------------------------------------------------------------------
 from langchain.embeddings import HuggingFaceEmbeddings
-from llama_index.embeddings.langchain import LangchainEmbedding
 
 from sentence_transformers import SentenceTransformer
 from langchain.embeddings.base import Embeddings
