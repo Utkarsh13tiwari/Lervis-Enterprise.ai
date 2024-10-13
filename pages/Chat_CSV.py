@@ -12,7 +12,7 @@ import sqldf
 
 col1, col2, col3 = st.columns([1,4,1])
 with col1:
-        st.image(r'https://github.com/Utkarsh13tiwari/Lervis-Enterprise.ai/blob/main/transperent_logo.png', width=200)
+        st.image('transperent_logo.png', width=200)
 # AI Decision Tracker Class
 class AIDecisionTracker:
     def __init__(self):
