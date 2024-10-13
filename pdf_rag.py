@@ -53,9 +53,6 @@ from langchain.output_parsers.openai_tools import JsonOutputToolsParser
 from langchain.output_parsers import PydanticOutputParser
 
 
-os.environ["GROQ_API_KEY"] = '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'
-os.environ["NVIDIA_API_KEY"] = "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"
-os.environ["OPENAI_API_KEY"] = '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'
 
 
 #--------------------------------------------------------------------------------------
