@@ -344,6 +344,13 @@ if 'chat_history' not in st.session_state:
 
 with col2:
     st.write(f"### {st.session_state['current_Session']} :")
+    into_text = "### Chat with your SQL database."
+    with col2:
+        def stream_data():
+            for word in into_text.split(" "):
+                yield word + " "
+                time.sleep(0.08)
+        st.write_stream(stream_data)
     parser = StrOutputParser()
     # Display the conversation history
     for message in st.session_state['Session'][st.session_state['current_Session']]:
