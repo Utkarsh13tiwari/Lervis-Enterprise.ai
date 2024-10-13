@@ -14,9 +14,10 @@ import time
 from langchain.chains import create_history_aware_retriever
 
 
-os.environ["GROQ_API_KEY"] = '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'
-os.environ["OPENAI_API_KEY"] = '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'
-os.environ["NVIDIA_API_KEY"] = "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"
+openai = st.secrets.db_credentials.openai 
+tavily = st.secrets.db_credentials.tavily
+groq = st.secrets.db_credentials.groq
+nvidia = st.secrets.db_credentials.nvidia
 
 #--------------------------------------------------------------------------------------
 from langchain.embeddings import HuggingFaceEmbeddings
@@ -39,7 +40,7 @@ embedding_model = CustomEmbeddings(model_name="sentence-transformers/paraphrase-
 
 
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
-llm_nvidia = ChatNVIDIA(model="meta/llama3-70b-instruct")
+llm_nvidia = ChatNVIDIA(model="meta/llama3-70b-instruct",api_key = nvidia)
 #--------------------------------------------------------------------------------------
 
 
@@ -108,7 +109,7 @@ def create_agent(filename: str, filetype: str):
     """
 
     # Create an OpenAI object.
-    llm_gpt = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.5)
+    llm_gpt = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.5,api_key = openai)
 
     # Read the CSV file into a Pandas DataFrame.
     #df = pd.read_csv(filename, encoding='latin1', sep='delimiter', header=None, engine='python')
