@@ -9,7 +9,7 @@ headers = {"Authorization": "Bearer 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"}
 
 col1, col2, col3 = st.columns([1,2,1])
 with col1:
-        st.image(r'C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\transperent_logo.png', width=200)
+        st.image('transperent_logo.png', width=200)
 
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
