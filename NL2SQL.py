@@ -356,8 +356,8 @@ with col2:
         elif not message["isUser"]: 
             message_class = "assistant-message"
             st.write("### Agent Response:")
-            st.markdown(f'<div class="message-container"><p class="{message_class}">{parser.parse(message["text"])}</p></div>', unsafe_allow_html=True)
-
+            st.write(parser.parse(message["text"]))
+            #st.markdown(f'<div class="message-container"><p class="{message_class}">{parser.parse(message["text"])}</p></div>', unsafe_allow_html=True)
 #--------------------------------------------------------------------------------------------------------
 # Input field for user query
 user_input = st.chat_input("Query your database:",args=(True,))
