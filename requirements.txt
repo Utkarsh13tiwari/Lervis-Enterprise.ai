@@ -20,5 +20,4 @@ Requests==2.32.3
 sentence_transformers==3.1.1
 SQLAlchemy
 sqldf==0.4.2
-streamlit==1.38.0
 streamlit==1.39.0
