@@ -327,13 +327,6 @@ if st.sidebar.button("Start New Session"):
 # Set the default current conversation
 if 'current_Session' not in st.session_state:
     st.session_state['current_Session'] = 'Session 1'
-    into_text = "### Chat with your SQL database."
-    with col2:
-        def stream_data():
-            for word in into_text.split(" "):
-                yield word + " "
-                time.sleep(0.08)
-        st.write_stream(stream_data)
 
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = []
