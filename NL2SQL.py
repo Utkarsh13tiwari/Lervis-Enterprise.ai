@@ -155,7 +155,7 @@ answer_prompt = PromptTemplate.from_template(
     
     Response Format:
     **SQL query used**: Display the exact SQL query that you executed with in ```sql ```.
-    **Answer**: Provide the results (in strings) based on the query execution.
+    **Answer**: Provide the results in markdown and points based on the query execution.
 
     If only only if asked for ploting or table then also provide Data format as:
     **Data format**: If the user requires or asked to drawing/show a table, reply as follows:
