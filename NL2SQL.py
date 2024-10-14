@@ -148,7 +148,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 
 execute_query = QuerySQLDataBaseTool(db=db)
-write_query = create_sql_query_chain(llm_gpt, db)
+write_query = create_sql_query_chain(llm_gpt, db, k=100)
 
 answer_prompt = PromptTemplate.from_template(
     """Given the following user question, corresponding SQL query, and SQL result, answer the user question.
