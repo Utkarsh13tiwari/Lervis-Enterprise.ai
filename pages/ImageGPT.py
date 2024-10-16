@@ -29,7 +29,7 @@ REFINER_2_1_API_URL = "https://api-inference.huggingface.co/models/runwayml/stab
 
 REFINER_1_4_API_URL = "https://api-inference.huggingface.co/models/CompVis/stable-diffusion-v1-4"
 
-headers = {"Authorization": huggingfc_token}
+headers = {"Authorization": "Bearer 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"}
 
 col1, col2, col3 = st.columns([1,2,1])
 with col1:
