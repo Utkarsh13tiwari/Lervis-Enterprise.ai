@@ -11,16 +11,13 @@ from groq import Groq
 st.set_page_config(
     page_title="Lervis Enterprise",
     layout="wide",
-    page_icon = 'transperent_logo.png'
+    page_icon = r'C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\transperent_logo.png'
 )  
 
 
-groq_tcw = st.secrets.db_credentials.groq_tcw
-huggingfc_token = st.secrets.db_credentials.huggingfc_token
-
 os.environ["GROQ_API_KEY"] = "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"
 
-client = Groq(api_key = os.environ["GROQ_API_KEY"])
+client = Groq()
 
 
 REFINER_xl_API_URL = "https://api-inference.huggingface.co/models/ZB-Tech/Text-to-Image"
@@ -50,6 +47,7 @@ def stream_parser(stream):
 
 def llava_model(client, model, base64_image, prompt):
     try:
+        # Create the chat completion request
         completion = client.chat.completions.create(
             messages=[
                 {
@@ -70,10 +68,11 @@ def llava_model(client, model, base64_image, prompt):
             max_tokens=1024,
             top_p=1,
             stream=False,
-            api_key = os.environ["GROQ_API_KEY"],
             stop=None,
         )
 
+        # Extract the response content
+        #st.write("API Response:", completion)
         print(completion.choices[0].message)
         return  completion.choices[0].message
 
@@ -106,7 +105,7 @@ with col2:
             model = "llama-3.2-11b-vision-preview"
             MLLM_reponse = llava_model(client, model=model, base64_image = encode_image_to_base64(uploaded_image), prompt=query_prompt)
 
-        st.write(MLLM_reponse)
+        st.write(MLLM_reponse.content)
 
     st.divider()
     selected = pills("Stable diffusion Models", ["Stable Diffusion xl", "Stable Diffusion v1.5", "Stable Diffusion v2.1", "Flax Stable Diffusion v1.4"], ["🎈", "🎈", "🎈", "🎈"])
@@ -140,12 +139,15 @@ with col2:
         if selected == 'Flax Stable Diffusion v1.4':
             image_bytes = query(payload, REFINER_1_4_API_URL)
 
+            #stream_output = st.write_stream(stream_parser(image_bytes))
 
         if image_bytes:
             try:
+                # Attempt to open the image using PIL
                 print("True")
                 generated_image = Image.open(io.BytesIO(image_bytes))
                 st.image(generated_image, caption="Generated Image", use_column_width=True)
             except Exception as e:
                 st.error(f"Error displaying image: {e}")
+                # Debug: Print raw bytes for inspection if needed
                 st.write("Raw image bytes (first 100 bytes):", image_bytes[:100] if isinstance(image_bytes, bytes) else "Not bytes")
