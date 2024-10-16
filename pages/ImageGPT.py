@@ -18,7 +18,9 @@ st.set_page_config(
 groq_tcw = st.secrets.db_credentials.groq_tcw
 huggingfc_token = st.secrets.db_credentials.huggingfc_token
 
-client = Groq(api_key = groq_tcw)
+os.environ["GROQ_API_KEY"] = "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"
+
+client = Groq(api_key = os.environ["GROQ_API_KEY"])
 
 
 REFINER_xl_API_URL = "https://api-inference.huggingface.co/models/ZB-Tech/Text-to-Image"
@@ -68,7 +70,7 @@ def llava_model(client, model, base64_image, prompt):
             max_tokens=1024,
             top_p=1,
             stream=False,
-            api_key = groq_tcw,
+            api_key = os.environ["GROQ_API_KEY"],
             stop=None,
         )
 
