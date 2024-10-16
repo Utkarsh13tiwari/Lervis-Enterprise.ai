@@ -14,7 +14,7 @@ os.environ["NVIDIA_API_KEY"] = "nvapi-Zv_S88H2SdZzBFS6tDX-vkY_T5SN0nFlpOwLKp1aS6
 # Initialize the NVIDIA language model
 @st.cache_resource
 def load_nvidia_llm():
-    return ChatNVIDIA(model="mistralai/mixtral-8x7b-instruct-v0.1")
+    return ChatNVIDIA(model="mistralai/mixtral-8x7b-instruct-v0.1", api_key = nvidia)
 
 nvidia_llm = load_nvidia_llm()
 
@@ -22,7 +22,11 @@ nvidia_llm = load_nvidia_llm()
 os.environ["OPENAI_API_KEY"] = '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'
 
 # Initialize the OpenAI language model
-openai_llm = ChatOpenAI(model="gpt-3.5-turbo", api_key=os.environ["OPENAI_API_KEY"])
+openai_llm = ChatOpenAI(model="gpt-3.5-turbo", api_key=openai)
+
+col1, col2, col3 = st.columns([1,4,1])
+with col1:
+        st.image('transperent_logo.png', width=200)
 
 def analyze_responses(examples, user_query, user_response):
     example_prompt = PromptTemplate.from_template(
@@ -105,46 +109,45 @@ Return only the plot generation code.
 prompt = PromptTemplate(input_variables=["query"], template=template)
 chain = LLMChain(llm=openai_llm, prompt=prompt)
 
-st.title("👨‍💻 AI-Powered CSV Query and Insight Generator")
 
-uploaded_file = st.file_uploader("Upload a CSV file", type="csv")
-if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file)
-    st.write("CSV file uploaded successfully!")
-    st.write(df.head())
+with col2:
+    st.title("👨‍💻 AI-Powered CSV Query and Insight Generator")
 
-    selected = pills("Select an option:", ["Generate Insights", "Plot Graph"])
+    uploaded_file = st.file_uploader("Upload a CSV file", type="csv")
+    if uploaded_file is not None:
+        df = pd.read_csv(uploaded_file)
+        st.write("CSV file uploaded successfully!")
+        st.write(df.head())
 
-    user_query = st.text_area("Enter your prompt:")
+        selected = pills("Select an option:", ["Generate Insights", "Plot Graph"])
 
-    if selected == "Generate Insights":
-        if st.button("Generate Insights"):
-            if user_query:
-                with st.spinner("Analyzing CSV data and generating insights..."):
-                    csv_response = query_csv(df, user_query)
-                    st.subheader("Query Response:")
-                    st.write(csv_response)
+        user_query = st.text_area("Enter your prompt:")
 
+        if selected == "Generate Insights":
+            if st.button("Generate Insights"):
+                if user_query:
+                    with st.spinner("Analyzing CSV data and generating insights..."):
+                        csv_response = query_csv(df, user_query)
+                        st.subheader("Query Response:")
+                        st.write(csv_response)
+
+                        
+                        insight = analyze_responses([], user_query, csv_response)
+                        st.subheader("Generated Insight:")
+                        st.write(insight)
+
+        elif selected == "Plot Graph":
+            if st.button("Generate Plot"):
+                if user_query:
+                    plot_code = chain.run(user_query)
                     
-                    insight = analyze_responses([], user_query, csv_response)
-                    st.subheader("Generated Insight:")
-                    st.write(insight)
-
-    elif selected == "Plot Graph":
-        if st.button("Generate Plot"):
-            if user_query:
-                plot_code = chain.run(user_query)
-                
-                editable_plot_code = st.text_area("Edit your plot code:", value=plot_code, height=100)                
-                try:
-                    local_scope = {'df': df, 'px': px}
-                    exec(editable_plot_code, local_scope)  # Execute the code
-                    if 'fig' in local_scope:
-                        st.plotly_chart(local_scope['fig'], key="user_generated_plot", use_container_width=True)
-                    else:
-                        st.error("No figure was generated. Please check your code.")
-                except Exception as e:
-                        st.error(f"An error occurred while generating the plot: {e}")
-
-
-
+                    editable_plot_code = st.text_area("Edit your plot code:", value=plot_code, height=100)                
+                    try:
+                        local_scope = {'df': df, 'px': px}
+                        exec(editable_plot_code, local_scope)  # Execute the code
+                        if 'fig' in local_scope:
+                            st.plotly_chart(local_scope['fig'], key="user_generated_plot", use_container_width=True)
+                        else:
+                            st.error("No figure was generated. Please check your code.")
+                    except Exception as e:
+                            st.error(f"An error occurred while generating the plot: {e}")
