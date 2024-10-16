@@ -134,60 +134,60 @@ chain = LLMChain(llm=openai_llm, prompt=prompt)
 with col2:
     st.title("👨‍💻 AI-Powered CSV Query and Insight Generator")
 
-uploaded_file = st.file_uploader("Upload a CSV file", type="csv")
-if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file)
-    st.write("CSV file uploaded successfully!")
-    st.write(df.head())
-
-    selected = pills("Select an option:", ["Generate Insights", "Plot Graph"])
-
+    uploaded_file = st.file_uploader("Upload a CSV file", type="csv")
+    if uploaded_file is not None:
+        df = pd.read_csv(uploaded_file)
+        st.write("CSV file uploaded successfully!")
+        st.write(df.head())
     
-
-    if selected == "Generate Insights":
-        # Show the checkbox and example input only when "Generate Insights" is selected
-        use_custom_format = st.checkbox("Use custom few-shot examples")
-        examples = default_examples
-
-        if use_custom_format:
-            st.write("Provide your own examples in the format: 'query => response => insight'")
-            example_input = st.text_area(
-                "Enter few-shot examples (one per line, format: 'query => response => insight')"
-            )
-            if example_input:
-                examples = [
-                    {"query": q, "response": r, "insight": i}
-                    for q, r, i in [line.split(" => ") for line in example_input.splitlines() if " => " in line]
-                ]
-        user_query = st.text_area("Enter your prompt:")
-
-        if st.button("Generate Insights"):
-            if user_query:
-                with st.spinner("Analyzing CSV data and generating insights..."):
-                    csv_response = query_csv(df, user_query)
-                    st.subheader("Query Response:")
-                    st.write(csv_response)
-
-                    insight = analyze_responses(examples, user_query, csv_response)
-                    st.subheader("Generated Insight:")
-                    st.write(insight)
-
-    elif selected == "Plot Graph":
-        user_query = st.text_area("Enter your prompt:")
-        if st.button("Generate Plot"):
-            if user_query:
-                plot_code = chain.run(user_query)
-                
-                editable_plot_code = st.text_area("Edit your plot code:", value=plot_code, height=200)                
-                try:
-                    local_scope = {'df': df, 'px': px}
-                    exec(editable_plot_code, local_scope)  # Execute the code
-                    if 'fig' in local_scope:
-                        st.plotly_chart(local_scope['fig'], key="user_generated_plot", use_container_width=True)
-                    else:
-                        st.error("No figure was generated. Please check your code.")
-                except Exception as e:
-                    st.error(f"An error occurred while generating the plot: {e}")
+        selected = pills("Select an option:", ["Generate Insights", "Plot Graph"])
+    
+        
+    
+        if selected == "Generate Insights":
+            # Show the checkbox and example input only when "Generate Insights" is selected
+            use_custom_format = st.checkbox("Use custom few-shot examples")
+            examples = default_examples
+    
+            if use_custom_format:
+                st.write("Provide your own examples in the format: 'query => response => insight'")
+                example_input = st.text_area(
+                    "Enter few-shot examples (one per line, format: 'query => response => insight')"
+                )
+                if example_input:
+                    examples = [
+                        {"query": q, "response": r, "insight": i}
+                        for q, r, i in [line.split(" => ") for line in example_input.splitlines() if " => " in line]
+                    ]
+            user_query = st.text_area("Enter your prompt:")
+    
+            if st.button("Generate Insights"):
+                if user_query:
+                    with st.spinner("Analyzing CSV data and generating insights..."):
+                        csv_response = query_csv(df, user_query)
+                        st.subheader("Query Response:")
+                        st.write(csv_response)
+    
+                        insight = analyze_responses(examples, user_query, csv_response)
+                        st.subheader("Generated Insight:")
+                        st.write(insight)
+    
+        elif selected == "Plot Graph":
+            user_query = st.text_area("Enter your prompt:")
+            if st.button("Generate Plot"):
+                if user_query:
+                    plot_code = chain.run(user_query)
+                    
+                    editable_plot_code = st.text_area("Edit your plot code:", value=plot_code, height=200)                
+                    try:
+                        local_scope = {'df': df, 'px': px}
+                        exec(editable_plot_code, local_scope)  # Execute the code
+                        if 'fig' in local_scope:
+                            st.plotly_chart(local_scope['fig'], key="user_generated_plot", use_container_width=True)
+                        else:
+                            st.error("No figure was generated. Please check your code.")
+                    except Exception as e:
+                        st.error(f"An error occurred while generating the plot: {e}")
 
 
 
