@@ -9,17 +9,16 @@ from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
 from streamlit_pills import pills  
 from langchain.chains import LLMChain
 
-os.environ["NVIDIA_API_KEY"] = "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"
-
+openai = st.secrets.db_credentials.openai 
+tavily = st.secrets.db_credentials.tavily
+groq = st.secrets.db_credentials.groq
+nvidia = st.secrets.db_credentials.nvidia
 # Initialize the NVIDIA language model
 @st.cache_resource
 def load_nvidia_llm():
     return ChatNVIDIA(model="mistralai/mixtral-8x7b-instruct-v0.1", api_key = nvidia)
 
 nvidia_llm = load_nvidia_llm()
-
-# Set the API key for OpenAI model
-os.environ["OPENAI_API_KEY"] = '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'
 
 # Initialize the OpenAI language model
 openai_llm = ChatOpenAI(model="gpt-3.5-turbo", api_key=openai)
