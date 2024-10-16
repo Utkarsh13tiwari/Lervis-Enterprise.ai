@@ -135,7 +135,7 @@ if uploaded_file is not None:
             if user_query:
                 plot_code = chain.run(user_query)
                 
-                editable_plot_code = st.text_area("Edit your plot code:", value=plot_code, height=200)                
+                editable_plot_code = st.text_area("Edit your plot code:", value=plot_code, height=100)                
                 try:
                     local_scope = {'df': df, 'px': px}
                     exec(editable_plot_code, local_scope)  # Execute the code
