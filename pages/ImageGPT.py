@@ -104,7 +104,7 @@ with col2:
             model = "llama-3.2-11b-vision-preview"
             MLLM_reponse = llava_model(client, model=model, base64_image = encode_image_to_base64(uploaded_image), prompt=query_prompt)
 
-        st.write(MLLM_reponse.content)
+        st.write(MLLM_reponse)
 
     st.divider()
     selected = pills("Stable diffusion Models", ["Stable Diffusion xl", "Stable Diffusion v1.5", "Stable Diffusion v2.1", "Flax Stable Diffusion v1.4"], ["🎈", "🎈", "🎈", "🎈"])
