@@ -10,6 +10,19 @@ from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
 from streamlit_pills import pills  
 from langchain.chains import LLMChain
 
+
+ICON_BLUE = "transperent_logo.png"
+
+st.logo(ICON_BLUE, icon_image=ICON_BLUE)
+
+# Set the page configuration
+st.set_page_config(
+    page_title="Lervis Enterprise",
+    layout="wide",
+    page_icon = ICON_BLUE
+) 
+
+
 openai = st.secrets.db_credentials.openai 
 tavily = st.secrets.db_credentials.tavily
 groq = st.secrets.db_credentials.groq
