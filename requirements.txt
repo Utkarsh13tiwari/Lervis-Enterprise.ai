@@ -26,3 +26,4 @@ pysqlite3-binary
 PyMuPDF
 streamlit-pills
 pygwalker
+mitosheet
