@@ -140,34 +140,9 @@ with col2:
 
 if uploaded_file:   
     with col2:
-        st.markdown("""
-        <style>
-        .pill-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .pill {
-            background-color: #1f77b4;
-            color: white;
-            padding: 15px 30px;  /* Adjust this to change the size */
-            border-radius: 25px;
-            margin: 5px;
-            cursor: pointer;
-            font-size: 20px;      /* Adjust font size */
-            transition: background-color 0.3s ease;
-        }
-
-        .pill:hover {
-            background-color: #ff7f0e;
-        }
-
-        </style>
-        """, unsafe_allow_html=True)
         tab1, tab2, tab3, tab4, tab5 = st.columns(5)
         with tab3:
-            tab = pills("Select your Page: ", ["Chat", "Visualise"])
+            tab = pills("Select your Page: ", ["Chat", "Visualise", "Edit CSV"])
 
 if uploaded_file:
     if  tab == "Chat":
@@ -238,6 +213,9 @@ if uploaded_file:
             renderer = get_pyg_renderer()
 
             renderer.explorer()
+
+    if tab == "Edit CSV":
+        spreadsheet(df)
 
 
 
