@@ -215,7 +215,7 @@ if uploaded_file:
                         if user_query:
                             plot_code = chain.run(user_query)
                             
-                            editable_plot_code = st.text_area("Edit your plot code:", value=plot_code, height=200)                
+                            editable_plot_code = st.text_area("Edit your plot code:", value=plot_code, height=50)                
                             try:
                                 local_scope = {'df': df, 'px': px}
                                 exec(editable_plot_code, local_scope)  # Execute the code
