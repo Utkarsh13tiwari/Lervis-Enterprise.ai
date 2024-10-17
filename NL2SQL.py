@@ -15,15 +15,21 @@ import streamlit as st
 from langchain_core.messages import SystemMessage
 from langchain_core.messages import HumanMessage
 from langgraph.prebuilt import create_react_agent
+from langchain.agents import AgentExecutor
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
+from langchain.agents.agent_types  import AgentType
+
 import pandas as pd
 import json
+from streamlit_pills import pills
+import pandas as pd
+from sqlalchemy import create_engine
 
 
 #--------------------------------------------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-ICON_BLUE = "transperent_logo.png"
+ICON_BLUE = r"transperent_logo.png"
 
 st.logo(ICON_BLUE, icon_image=ICON_BLUE)
 
@@ -63,22 +69,20 @@ st.markdown(
 )
 
 #-------------------------------------------  API Key's ---------------------------------------------------------------
-openai = st.secrets.db_credentials.openai 
-tavily = st.secrets.db_credentials.tavily
-groq = st.secrets.db_credentials.groq
-nvidia = st.secrets.db_credentials.nvidia
+os.environ["GROQ_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = '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'
 
 #----------------------------------------------------------------------------------------------------------------------
 col1, col2, col3 = st.columns([1, 4, 1])
 #------------------------------------------------- llm's -----------------------------------------------------------------------------
-llm_gpt = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, api_key = openai)
+llm_gpt = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 
 llm_groq = ChatGroq(
     model="mixtral-8x7b-32768",
     temperature=0,
     max_tokens=None,  # Limiting the number of tokens per request
     timeout=None,
-    api_key = groq,
+    api_key=
     max_retries=2,
 )
 #-------------------------------------------------------------------------------------------------------------------------------------
