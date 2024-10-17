@@ -46,7 +46,7 @@ openai_llm = ChatOpenAI(model="gpt-3.5-turbo", api_key=openai)
 
 col1, col2, col3 = st.columns([1,4,1])
 with col1:
-        st.image(r'C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\transperent_logo.png', width=200)
+        st.image(r'transperent_logo.png', width=200)
 
 default_examples = [
     {"query": "What are the sales trends?", "response": "Sales increased by 10% in Q1.", "insight": "The company should focus on sustaining the growth by investing in marketing."},
