@@ -140,8 +140,8 @@ with col2:
 
 if uploaded_file:   
     with col2:
-        tab1, tab2, tab3, tab4, tab5 = st.columns(5)
-        with tab3:
+        tab1, tab2, tab3 = st.columns(3)
+        with tab2:
             tab = pills("Select your Page: ", ["Chat", "Visualise", "Edit CSV"])
 
 if uploaded_file:
