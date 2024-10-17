@@ -11,7 +11,6 @@ from streamlit_pills import pills
 from langchain.chains import LLMChain
 import pygwalker as pyg
 from pygwalker.api.streamlit import StreamlitRenderer
-from mitosheet.streamlit.v1 import spreadsheet
 
 
 ICON_BLUE = "transperent_logo.png"
@@ -143,7 +142,7 @@ if uploaded_file:
     with col2:
         tab1, tab2, tab3 = st.columns(3)
         with tab2:
-            tab = pills("Select your Page: ", ["Chat", "Visualise", "Edit CSV"])
+            tab = pills("Select your Page: ", ["Chat", "Visualise"])
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
@@ -212,9 +211,6 @@ if uploaded_file:
         renderer = get_pyg_renderer()
 
         renderer.explorer()
-
-    if tab == "Edit CSV":
-        spreadsheet(df)
 
 
 
