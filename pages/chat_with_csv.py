@@ -9,6 +9,8 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
 from streamlit_pills import pills  
 from langchain.chains import LLMChain
+import pygwalker as pyg
+from pygwalker.api.streamlit import StreamlitRenderer
 
 
 ICON_BLUE = "transperent_logo.png"
@@ -44,7 +46,7 @@ openai_llm = ChatOpenAI(model="gpt-3.5-turbo", api_key=openai)
 
 col1, col2, col3 = st.columns([1,4,1])
 with col1:
-        st.image('transperent_logo.png', width=200)
+        st.image(r'C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\transperent_logo.png', width=200)
 
 default_examples = [
     {"query": "What are the sales trends?", "response": "Sales increased by 10% in Q1.", "insight": "The company should focus on sustaining the growth by investing in marketing."},
@@ -131,64 +133,111 @@ Return only the plot generation code.
 prompt = PromptTemplate(input_variables=["query"], template=template)
 chain = LLMChain(llm=openai_llm, prompt=prompt)
 
-
 with col2:
     st.title("👨‍💻 AI-Powered CSV Query and Insight Generator")
 
     uploaded_file = st.file_uploader("Upload a CSV file", type="csv")
-    if uploaded_file is not None:
-        df = pd.read_csv(uploaded_file)
-        st.write("CSV file uploaded successfully!")
-        st.write(df.head())
-    
-        selected = pills("Select an option:", ["Generate Insights", "Plot Graph"])
-    
+
+if uploaded_file:   
+    with col2:
+        st.markdown("""
+        <style>
+        .pill-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .pill {
+            background-color: #1f77b4;
+            color: white;
+            padding: 15px 30px;  /* Adjust this to change the size */
+            border-radius: 25px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 20px;      /* Adjust font size */
+            transition: background-color 0.3s ease;
+        }
+
+        .pill:hover {
+            background-color: #ff7f0e;
+        }
+
+        </style>
+        """, unsafe_allow_html=True)
+        tab1, tab2, tab3, tab4, tab5 = st.columns(5)
+        with tab3:
+            tab = pills("Select your Page: ", ["Chat", "Visualise"])
+
+if  tab == "Chat":
+    with col2:
+        if uploaded_file is not None:
+            df = pd.read_csv(uploaded_file)
+            st.write("CSV file uploaded successfully!")
+            st.write(df.head())
         
-    
-        if selected == "Generate Insights":
-            # Show the checkbox and example input only when "Generate Insights" is selected
-            use_custom_format = st.checkbox("Use custom few-shot examples")
-            examples = default_examples
-    
-            if use_custom_format:
-                st.write("Provide your own examples in the format: 'query => response => insight'")
-                example_input = st.text_area(
-                    "Enter few-shot examples (one per line, format: 'query => response => insight')"
-                )
-                if example_input:
-                    examples = [
-                        {"query": q, "response": r, "insight": i}
-                        for q, r, i in [line.split(" => ") for line in example_input.splitlines() if " => " in line]
-                    ]
-            user_query = st.text_area("Enter your prompt:")
-    
-            if st.button("Generate Insights"):
-                if user_query:
-                    with st.spinner("Analyzing CSV data and generating insights..."):
-                        csv_response = query_csv(df, user_query)
-                        st.subheader("Query Response:")
-                        st.write(csv_response)
-    
-                        insight = analyze_responses(examples, user_query, csv_response)
-                        st.subheader("Generated Insight:")
-                        st.write(insight)
-    
-        elif selected == "Plot Graph":
-            user_query = st.text_area("Enter your prompt:")
-            if st.button("Generate Plot"):
-                if user_query:
-                    plot_code = chain.run(user_query)
-                    
-                    editable_plot_code = st.text_area("Edit your plot code:", value=plot_code, height=200)                
-                    try:
-                        local_scope = {'df': df, 'px': px}
-                        exec(editable_plot_code, local_scope)  # Execute the code
-                        if 'fig' in local_scope:
-                            st.plotly_chart(local_scope['fig'], key="user_generated_plot", use_container_width=True)
-                        else:
-                            st.error("No figure was generated. Please check your code.")
-                    except Exception as e:
-                        st.error(f"An error occurred while generating the plot: {e}")
+            selected = pills("Select an option:", ["Generate Insights", "Plot Graph"])
+        
+            
+        
+            if selected == "Generate Insights":
+                # Show the checkbox and example input only when "Generate Insights" is selected
+                use_custom_format = st.checkbox("Use custom few-shot examples")
+                examples = default_examples
+        
+                if use_custom_format:
+                    st.write("Provide your own examples in the format: 'query => response => insight'")
+                    example_input = st.text_area(
+                        "Enter few-shot examples (one per line, format: 'query => response => insight')"
+                    )
+                    if example_input:
+                        examples = [
+                            {"query": q, "response": r, "insight": i}
+                            for q, r, i in [line.split(" => ") for line in example_input.splitlines() if " => " in line]
+                        ]
+                user_query = st.text_area("Enter your prompt:")
+        
+                if st.button("Generate Insights"):
+                    if user_query:
+                        with st.spinner("Analyzing CSV data and generating insights..."):
+                            csv_response = query_csv(df, user_query)
+                            st.subheader("Query Response:")
+                            st.write(csv_response)
+        
+                            insight = analyze_responses(examples, user_query, csv_response)
+                            st.subheader("Generated Insight:")
+                            st.write(insight)
+        
+            elif selected == "Plot Graph":
+                user_query = st.text_area("Enter your prompt:")
+                if st.button("Generate Plot"):
+                    if user_query:
+                        plot_code = chain.run(user_query)
+                        
+                        editable_plot_code = st.text_area("Edit your plot code:", value=plot_code, height=200)                
+                        try:
+                            local_scope = {'df': df, 'px': px}
+                            exec(editable_plot_code, local_scope)  # Execute the code
+                            if 'fig' in local_scope:
+                                st.plotly_chart(local_scope['fig'], key="user_generated_plot", use_container_width=True)
+                            else:
+                                st.error("No figure was generated. Please check your code.")
+                        except Exception as e:
+                            st.error(f"An error occurred while generating the plot: {e}")
+
+
+if tab  == "Visualise":
+    with col2:
+        if uploaded_file is not None:
+            @st.cache_resource
+            def get_pyg_renderer() -> "StreamlitRenderer":
+                df = pd.read_csv(uploaded_file)
+                # If you want to use feature of saving chart config, set `spec_io_mode="rw"`
+                return StreamlitRenderer(df, spec="./gw_config.json", spec_io_mode="rw")
+
+            renderer = get_pyg_renderer()
+
+            renderer.explorer()
 
 
 
