@@ -204,16 +204,14 @@ if uploaded_file:
 
 
     if tab  == "Visualise":
-        if uploaded_file is not None:
-            @st.cache_resource
-            def get_pyg_renderer() -> "StreamlitRenderer":
-                df = pd.read_csv(uploaded_file)
-                # If you want to use feature of saving chart config, set `spec_io_mode="rw"`
-                return StreamlitRenderer(df, spec="./gw_config.json", spec_io_mode="rw")
+        @st.cache_resource
+        def get_pyg_renderer() -> "StreamlitRenderer":
+            # If you want to use feature of saving chart config, set `spec_io_mode="rw"`
+            return StreamlitRenderer(df, spec="./gw_config.json", spec_io_mode="rw")
 
-            renderer = get_pyg_renderer()
+        renderer = get_pyg_renderer()
 
-            renderer.explorer()
+        renderer.explorer()
 
     if tab == "Edit CSV":
         spreadsheet(df)
