@@ -91,12 +91,12 @@ llm_groq = ChatGroq(
 #-------------------------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------- db --------------------------------------------------------------------------------------------------------------------------
 
-engine = create_engine(r"sqlite:///C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\Chinook.db")
+engine = create_engine(r"sqlite:///Chinook.db")
 
-db = SQLDatabase.from_uri(r"sqlite:///C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\Chinook.db")
+db = SQLDatabase.from_uri(r"sqlite:///Chinook.db")
 col1, col2, col3 = st.columns([1,4,1])
 with col1:
-        st.image(r'C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\transperent_logo.png', width=200)
+        st.image('transperent_logo.png', width=200)
 
 with col3:
     with st.popover("Usage"):
