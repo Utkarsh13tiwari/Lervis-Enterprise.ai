@@ -73,21 +73,23 @@ col1, col2, col3 = st.columns([1, 4, 1])
 #------------------------------------------------- llm's -----------------------------------------------------------------------------
 llm_gpt = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, api_key = openai)
 
-llm = ChatGroq(
+llm_groq = ChatGroq(
     model="mixtral-8x7b-32768",
     temperature=0,
     max_tokens=None,  # Limiting the number of tokens per request
     timeout=None,
+    api_key = groq,
     max_retries=2,
-    api_key = groq
 )
 #-------------------------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------- db --------------------------------------------------------------------------------------------------------------------------
 
-db = SQLDatabase.from_uri("sqlite:///Chinook.db")
+engine = create_engine(r"sqlite:///C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\Chinook.db")
+
+db = SQLDatabase.from_uri(r"sqlite:///C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\Lervis\Chinook.db")
 col1, col2, col3 = st.columns([1,4,1])
 with col1:
-        st.image('transperent_logo.png', width=200)
+        st.image(r'C:\Users\utkar\OneDrive\Desktop\Lervis Enterprise\transperent_logo.png', width=200)
 
 with col3:
     with st.popover("Usage"):
@@ -140,7 +142,45 @@ with col3:
             """, 
             unsafe_allow_html=True)
 
+#----------------------------------------------- O&A -----------------------------------------------------------
+template = """
+You are a plotting assistant. Generate a plot in Plotly format based on the LLM response. You must identfy the SQL code in the query and generate a plot of the response:
+{query}
+{df}
 
+The plot should be a Plotly figure object like this:
+fig = px.scatter(df, x="sepal_width", y="sepal_length")
+
+You can also add other parameters to make it look visually appealing like this:
+
+fig = px.scatter(
+    df.query("year==2007"),
+    x="gdpPercap",
+    y="lifeExp",
+    size="pop",
+    color="continent",
+    hover_name="country",
+    log_x=True,
+    size_max=60,
+)
+
+Make sure when you join two columns in df, you just keep only 1 of the column name, example:
+
+fig = px.bar(df, x="FirstName LastName", y="TotalSpent", title="Customer who spent most on Iron Maiden")
+The above is join of two coloumns  "FirstName" and "LatsName" in df.
+correct code is:
+fig = px.bar(df, x="FirstName", y="TotalSpent", title="Customer who spent most on Iron Maiden")
+
+
+Please Return only the plot generation code and do not return anything else.
+
+return example:
+fig = px.bar(df, x="FirstName", y="TotalSpent", title="Customer who spent most on Iron Maiden")
+"""
+import plotly.express as px
+from langchain.chains import LLMChain
+prompt = PromptTemplate(input_variables=["query"], template=template)
+chain2 = LLMChain(llm=llm_gpt, prompt=prompt)
 #----------------------------------------------- O&A -----------------------------------------------------------
 from langchain_community.tools.sql_database.tool import QuerySQLDataBaseTool
 from langchain_core.output_parsers import StrOutputParser
@@ -148,7 +188,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 
 execute_query = QuerySQLDataBaseTool(db=db)
-write_query = create_sql_query_chain(llm_gpt, db, k=30)
+write_query = create_sql_query_chain(llm_gpt, db)
 
 answer_prompt = PromptTemplate.from_template(
     """Given the following user question, corresponding SQL query, and SQL result, answer the user question.
@@ -156,20 +196,6 @@ answer_prompt = PromptTemplate.from_template(
     Response Format:
     **SQL query used**: Display the exact SQL query that you executed with in ```sql ```.
     **Answer**: Provide the results in markdown and points based on the query execution.
-
-    If only only if asked for ploting or table then also provide Data format as:
-    **Data format**: If the user requires or asked to drawing/show a table, reply as follows:
-                     {{"table": {{"columns": ["column1", "column2", ...], "data": [["value1", "value2", ...], ["value1", "value2", ...], ...]}}}}
-
-                     If the query requires or asked to create/draw/show a bar chart/plot/diagram, reply as follows:
-                     {{"bar": {{"columns": ["A", "B", "C", ...], "data": [25, 24, 10, ...]}}}}
-
-                     If the query requires or asked to create/draw/show a line chart/plot/diagram, reply as follows:
-                     {{"line": {{"columns": ["A", "B", "C", ...], "data": [25, 24, 10, ...]}}}}
-
-                     with in ```json ```.
-
-    There can only be two types of chart, "bar" and "line".
     
     Return all output as a string.
 
@@ -217,269 +243,154 @@ Response Format:
 
 
 system_message = SystemMessage(content=SQL_PREFIX)
-#agent_executor = create_react_agent(llm_gpt, tools, messages_modifier=system_message)
-
+agent_executor = create_react_agent(llm_gpt, tools, messages_modifier=system_message)
+#agent_executor = AgentExecutor(agent=agent_executor, tools=tools)
 #--------------------------------------------- Agent --------------------------------------------------------
 
+prompt = PromptTemplate.from_template(SQL_PREFIX)
 #agent_executor = create_sql_agent(llm_gpt, db=db, agent_type="openai-tools", verbose=True, message = system_message)
-
+agent_executor = create_sql_agent(llm_gpt, db=db, verbose=True, top_k=1000, prefix=prompt, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True, return_intermediate_steps=True)
 
 #--------------------------------------------------------------
 
-def write_response(response_dict: dict):
-    """
-    Write a response from an agent to a Streamlit app and visualize data as needed.
-    
-    Args:
-        response_dict: The response from the agent in JSON format.
-    
-    Returns:
-        None
-    """
-    
-    # Check if the response is an answer.
-    if "answer" in response_dict:
-        st.write(response_dict["answer"])
-    
-    # Check if the response contains a bar chart.
-    if "bar" in response_dict:
-        bar_data = response_dict["bar"]
-        columns = bar_data["columns"]
-        data = bar_data["data"]
-
-        # Convert the columns and data into a Pandas DataFrame.
-        try:
-            df = pd.DataFrame(data=[data], columns=columns)
-            st.write("Bar Chart DataFrame created:")
-            st.write(df)  # Display the DataFrame
-            
-            # Plot the bar chart using Streamlit.
-            st.bar_chart(df.T)  # Transpose for proper column-bar mapping
-
-        except ValueError as e:
-            st.error(f"Error creating DataFrame for bar chart: {e}")
-    
-    # Check if the response contains a line chart.
-    if "line" in response_dict:
-        line_data = response_dict["line"]
-        columns = line_data["columns"]
-        data = line_data["data"]
-        
-        # Convert to DataFrame.
-        try:
-            df = pd.DataFrame(data=[data], columns=columns)
-            st.write("Line Chart DataFrame created:")
-            st.write(df)  # Display the DataFrame
-            
-            # Plot the line chart using Streamlit.
-            st.line_chart(df.T)  # Transpose for proper x-axis mapping
-
-        except ValueError as e:
-            st.error(f"Error creating DataFrame for line chart: {e}")
-    
-    # Check if the response contains a table.
-    if "table" in response_dict:
-        table_data = response_dict["table"]
-        columns = table_data["columns"]
-        data = table_data["data"]
-        
-        # Convert the columns and data into a Pandas DataFrame.
-        try:
-            df = pd.DataFrame(data, columns=columns)
-            st.write("Table DataFrame created:")
-            st.table(df)  # Display the DataFrame as a table
-
-        except ValueError as e:
-            st.error(f"Error creating DataFrame for table: {e}")
-
-
-def decode_response(response):
-    # Check if the response is empty or None
-    if not response:
-        print("Response is empty or None.")
-        return None
-
-    # Check if response is a valid JSON string
-    try:
-        import json
-        return json.loads(response)
-    except json.JSONDecodeError as e:
-        print(f"Failed to decode JSON. Error: {e}")
-        print("Response content:", response)  # Print the response for debugging
-        return None
-
 # Frontend code. Initialising states ---------------------------------------------------------------------------------------------------------------------------------------
+
 if 'Session' not in st.session_state:
     st.session_state['Session'] = {'Session 1': []}
+
+if 'current_Session' not in st.session_state:
+    st.session_state['current_Session'] = 'Session 1'
 
 if 'run' not in st.session_state:
     st.session_state.run = False
 
+# Sidebar for sessions
 for conv_id in st.session_state['Session']:
     if st.sidebar.button(conv_id):
-        st.session_state['current_session'] = conv_id
-                         
+        st.session_state['current_Session'] = conv_id  # Switch to the selected session
+
 if st.sidebar.button("Start New Session"):
-    new_conv_id = f"Session {len(st.session_state['Sessions']) + 1}"
-    st.session_state['Session'][new_conv_id] = []
-    st.session_state['current_Session'] = new_conv_id  # Set the new Session as the current one 
-
-# Set the default current conversation
-if 'current_Session' not in st.session_state:
-    st.session_state['current_Session'] = 'Session 1'
-
-if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = []
-
-
-#-------------------------------------------------------------------------------------------------------------------------------------
-# Use columns to center the conversation container and set width
+    new_conv_id = f"Session {len(st.session_state['Session']) + 1}"
+    st.session_state['Session'][new_conv_id] = []  # Initialize the new session
+    st.session_state['current_Session'] = new_conv_id  # Set the new session as the current one
 
 with col2:
-    into_text = "### Chat with your SQL database"
-    with col2:
-        def stream_data():
-            for word in into_text.split(" "):
-                yield word + " "
-                time.sleep(0.08)
-        st.write_stream(stream_data)
+
+    # Display the current session
     st.write(f"### {st.session_state['current_Session']} :")
-    parser = StrOutputParser()
-    # Display the conversation history
+
+    # Chat history for the current session
+    if st.session_state['current_Session'] not in st.session_state['Session']:
+        st.session_state['Session'][st.session_state['current_Session']] = []
+
+    # Display the conversation history for the current session
     for message in st.session_state['Session'][st.session_state['current_Session']]:
-        #message_class = "user-message" if message["isUser"] else "assistant-message"
-
         if message["isUser"]:
-            message_class = "user-message"
-            st.markdown(f'<div class="message-container"><p class="{message_class}">{message["text"]}</p></div>', unsafe_allow_html=True)
-
-        elif not message["isUser"]: 
-            message_class = "assistant-message"
+            st.markdown(f'<div class="message-container"><p class="user-message">{message["text"]}</p></div>', unsafe_allow_html=True)
+        else:
             st.write("### Agent Response:")
-            st.write(parser.parse(message["text"]))
+            st.write(message["text"])
+            # Check if there's an associated plot
+            if "plot" in message:
+                st.plotly_chart(message["plot"], use_container_width=True)
+
 #--------------------------------------------------------------------------------------------------------
 # Input field for user query
-user_input = st.chat_input("Query your database:",args=(True,))
+user_input = st.chat_input("Query your database:", args=(True,))
 
-#----------------------------------------------------------------------------------------------------------
-if user_input:
+with col2:
+    if len(st.session_state['Session'][st.session_state['current_Session']]) == 0:
+        st.divider()
+        st.markdown(
+            """
+            <div style="text-align: center;">
+                <h3>Query your database in Natural Language</h3>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        row1 = st.columns(2)
+        row2 = st.columns(2)
 
-    with col2:
-        st.write(f'<div class="message-container"><p class="user-message">{user_input}</p></div>', unsafe_allow_html=True)
+        row1[0].container(height=130).markdown(
+            """
+            <div style="text-align: center; height: 100px; display: flex; align-items: center; justify-content: center;">
+                Who is writing the rock music?
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
 
-    with col2:
-        with st.spinner("Agent"):
-            #agent_response = agent_executor.invoke(user_input)
-            #agent_response = agent_executor.invoke({"messages": [HumanMessage(content="Which country's customers spent the most?")]})
-            agent_response = chain.invoke({"question": user_input})
-            print("**********************************************************************************")
-            print(agent_response)
-            print("**********************************************************************************")
+        row1[1].container(height=130).markdown(
+            """
+            <div style="text-align: center; height: 100px; display: flex; align-items: center; justify-content: center;">
+                Which artist has earned the most according to the Invoice Lines? Use this artist to find which customer spent the most on this artist.
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
 
-        response = agent_response
-        #if agent_response:
-        #    decoded_response = decode_response(agent_response)
+        row2[0].container(height=130).markdown(
+            """
+            <div style="text-align: center; height: 100px; display: flex; align-items: center; justify-content: center;">
+                Who are our top Customers according to Invoices?
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+
+        row2[1].container(height=130).markdown(
+            """
+            <div style="text-align: center; height: 100px; display: flex; align-items: center; justify-content: center;">
+                Which Employee has the Highest Total Number of Customers?
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+
+#------------------------------------------------------------------------------------------------------------------------------
+with col2:
+    if user_input:
+        # Display the user input
+        st.markdown(f'<div class="message-container"><p class="user-message">{user_input}</p></div>', unsafe_allow_html=True)
+
+        with st.spinner("Agent is responding..."):
+            # Simulate agent response
+            agent_response = chain.invoke({"question": user_input})  # Invoke the agent (simulated)
+
+            # Display agent response
+            st.write("### Agent Response:")
+            st.write(agent_response)
+
+            # Append the user input and agent response to the current session's chat history
+            st.session_state['Session'][st.session_state['current_Session']].append({"isUser": True, "text": user_input})
+            st.session_state['Session'][st.session_state['current_Session']].append({"isUser": False, "text": agent_response})
+
+            # Extract SQL from the agent response and execute it
+            start_marker = "```sql" 
+            end_marker = "```"
+            start = agent_response.find(start_marker) + len(start_marker)
+            end = agent_response.find(end_marker, start)
+            query_text = agent_response[start:end].strip()
+
+            from sqlalchemy import text
+            with engine.begin() as conn:
+                query = text(query_text)
+                df = pd.read_sql(query, conn)
+
+            # Generate and display plot
+            plot_code = chain2.invoke({"query": user_input, "df": df})
+            st.code(plot_code["text"], language="python")
+            exec(plot_code["text"])  # Execute the code to generate a plot
+            
+            # Check if 'fig' was created
+            if 'fig' in locals():
+                st.session_state['Session'][st.session_state['current_Session']].append({"isUser": False, "text": "Generated Plot:", "plot": fig})
+                st.plotly_chart(fig, key="user_generated_plot")
+            
+            if len(st.session_state['Session'][st.session_state['current_Session']]) == 3:
+                print(len(st.session_state['Session'][st.session_state['current_Session']]))
+                st.rerun()
 
 
-        #agent_response = write_response(agent_response)
-        #agent_response = agent_response["output"]
-        #st.write(agent_response)
-        print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-        #print(agent_response)
-        print("**********************************************************************************")
-
-        st.write("### Agent Response:")
-        def stream_data():
-            for word in agent_response.split(" "):
-                yield word + " "
-                time.sleep(0.02)
-        st.write_stream(stream_data)
-
-#------------------------- plotting --------------------------------------------------------------------------------
-        try:
-            if '"bar": {' in response:
-
-                start_index = response.index('{"bar":')
-                json_str = response[start_index:]
-
-                # Find the closing brace for the "bar" object
-                end_index = json_str.rindex('}') + 1  # Find the last closing brace
-                json_str = json_str[:end_index]
-
-                # Print the extracted JSON string for debugging
-                print("Extracted JSON string:", json_str)
-
-                # Convert the JSON string to a dictionary
-                try:
-                    json_data = json.loads(json_str)
-                    
-                    # Create a Pandas DataFrame from the extracted data
-                    df = pd.DataFrame(json_data['bar']['data'], columns=json_data['bar']['columns'])
-
-                    print("Data format found. DataFrame created:")
-                    print(df)
-                    st.bar_chart(df.set_index(df.columns[0]),use_container_width=True)
-                except json.JSONDecodeError as e:
-                    print("Failed to decode JSON:", e)
-
-            if '"line": {' in response:
-
-                start_index = response.index('{"line":')
-                json_str = response[start_index:]
-
-                # Find the closing brace for the "bar" object
-                end_index = json_str.rindex('}') + 1  # Find the last closing brace
-                json_str = json_str[:end_index]
-
-                # Print the extracted JSON string for debugging
-                print("Extracted JSON string:", json_str)
-
-                # Convert the JSON string to a dictionary
-                try:
-                    json_data = json.loads(json_str)
-                    
-                    # Create a Pandas DataFrame from the extracted data
-                    df = pd.DataFrame(json_data['line']['data'], columns=json_data['line']['columns'])
-
-                    print("Data format found. DataFrame created:")
-                    print(df)
-                    st.line_chart(df)
-                except json.JSONDecodeError as e:
-                    print("Failed to decode JSON:", e)
-
-            if '"table": {' in response:
-
-                start_index = response.index('{"table":')
-                json_str = response[start_index:]
-
-                # Find the closing brace for the "bar" object
-                end_index = json_str.rindex('}') + 1  # Find the last closing brace
-                json_str = json_str[:end_index]
-
-                # Print the extracted JSON string for debugging
-                print("Extracted JSON string:", json_str)
-
-                # Convert the JSON string to a dictionary
-                try:
-                    json_data = json.loads(json_str)
-                    
-                    # Create a Pandas DataFrame from the extracted data
-                    df = pd.DataFrame(json_data['table']['data'], columns=json_data['table']['columns'])
-
-                    print("Data format found. DataFrame created:")
-                    print(df)
-                    st.table(df)
-                except json.JSONDecodeError as e:
-                    print("Failed to decode JSON:", e)
-
-        except Exception as e:
-            st.error(f"Unable to plot due to  error: {e}")
-
-#------------------------- plotting end--------------------------------------------------------------------------------
-
-    message = {'user': user_input, 'AI': agent_response}
-    st.session_state.chat_history.append(message)
-
-    with col2:
-        st.session_state['Session'][st.session_state['current_Session']].append({"isUser": True, "text": user_input})
-        st.session_state['Session'][st.session_state['current_Session']].append({"isUser": False, "text": agent_response})
+    # After each input, the messages are appended to the respective session’s chat history.
