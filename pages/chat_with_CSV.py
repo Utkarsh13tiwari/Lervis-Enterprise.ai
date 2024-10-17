@@ -11,6 +11,7 @@ from streamlit_pills import pills
 from langchain.chains import LLMChain
 import pygwalker as pyg
 from pygwalker.api.streamlit import StreamlitRenderer
+from mitosheet.streamlit.v1 import spreadsheet
 
 
 ICON_BLUE = "transperent_logo.png"
