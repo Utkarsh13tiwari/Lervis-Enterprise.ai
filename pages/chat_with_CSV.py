@@ -145,10 +145,10 @@ if uploaded_file:
             tab = pills("Select your Page: ", ["Chat", "Visualise", "Edit CSV"])
 
 if uploaded_file:
+    df = pd.read_csv(uploaded_file)
     if  tab == "Chat":
         with col2:
             if uploaded_file is not None:
-                df = pd.read_csv(uploaded_file)
                 st.write("CSV file uploaded successfully!")
                 st.write(df.head())
             
