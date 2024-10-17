@@ -25,3 +25,4 @@ streamlit==1.39.0
 pysqlite3-binary
 PyMuPDF
 streamlit-pills
+pygwalker
