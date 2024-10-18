@@ -93,8 +93,7 @@ with col2:
 if user_input and  generate:
     with col2:
         print(data.type)
-        #try: 
-        if  data.type == 'application/pdf':
+        try:
             from langchain.document_loaders import PyMuPDFLoader
             from langchain.text_splitter import RecursiveCharacterTextSplitter
             if data is not None:
@@ -295,3 +294,6 @@ if user_input and  generate:
                     time.sleep(0.02)
             st.write_stream(stream_data)
             #st.write(results["response"].content)
+        
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
