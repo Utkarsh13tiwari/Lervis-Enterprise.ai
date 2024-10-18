@@ -328,8 +328,8 @@ if user_input and  generate:
                 #retrieval_chain = create_retrieval_chain(retriever_chain, document_chain)
                 
     #------------------------------------------------------------------------------------------------------------------------------------------------
-				from operator import itemgetter
                 from langchain.schema.output_parser import StrOutputParser
+		from operator import itemgetter
                 from langchain.schema.runnable import RunnablePassthrough
                 import asyncio
                 from langchain.memory import ConversationBufferMemory
