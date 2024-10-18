@@ -293,6 +293,7 @@ if user_input and data is not None:
 
             with st.spinner("Agent is generating..."):
                 agent_response = rag_chain.invoke({"input": user_input, "chat_history": chat_history})
+		    
             st.session_state.chat_history.extend(
                 [
                     HumanMessage(content=user_input),
