@@ -25,6 +25,10 @@ st.set_page_config(
     page_icon = ICON_BLUE
 ) 
 
+col1, col2, col3 = st.columns([1,2,1])
+with col1:
+        st.image('transperent_logo.png', width=200)
+
 openai = st.secrets.db_credentials.openai 
 tavily = st.secrets.db_credentials.tavily
 groq = st.secrets.db_credentials.groq
