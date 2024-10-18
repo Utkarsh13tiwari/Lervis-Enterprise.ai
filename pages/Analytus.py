@@ -1,3 +1,6 @@
+package__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 from langchain_community.utilities import SQLDatabase
 from sqlalchemy import create_engine
 import streamlit as st
