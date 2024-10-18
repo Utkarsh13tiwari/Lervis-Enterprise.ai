@@ -114,17 +114,17 @@ with col2:
 
 with col2:
     def add_message_to_history(user_input, agent_response):
-            st.session_state['Session'].append({"isUser": True, "text": user_input})
-            st.session_state['Session'].append({"isUser": False, "text": agent_response})
+            st.session_state['RAG_Session'].append({"isUser": True, "text": user_input})
+            st.session_state['RAG_Session'].append({"isUser": False, "text": agent_response})
 
-    if 'Session' not in st.session_state:
-        st.session_state['Session'] = [] 
+    if 'RAG_Session' not in st.session_state:
+        st.session_state['RAG_Session'] = [] 
 
     if 'run' not in st.session_state:
         st.session_state.run = False
 
     with col2:
-        for message in st.session_state['Session']:
+        for message in st.session_state['RAG_Session']:
             if message["isUser"]:
                 st.markdown(f'<div class="message-container"><p class="user-message">{message["text"]}</p></div>', unsafe_allow_html=True)
             else:
