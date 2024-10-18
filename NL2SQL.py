@@ -390,12 +390,10 @@ with col2:
                 plot_code = chain2.invoke({"query": user_input, "df": df})
                 st.code(plot_code["text"], language="python")
                 exec(plot_code["text"])  # Execute the code to generate a plot
-                
                 # Check if 'fig' was created
                 if 'fig' in locals():
                     st.session_state['Session'][st.session_state['current_Session']].append({"isUser": False, "text": "Generated Plot:", "plot": fig})
                     st.plotly_chart(fig, key="user_generated_plot")
-            
             except Exception as e:
                 st.write(f"Could not plot  the data because: {e}")
 
