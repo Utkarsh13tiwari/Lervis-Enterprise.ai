@@ -400,7 +400,7 @@ with col2:
                     st.session_state['Session'][st.session_state['current_Session']].append({"isUser": False, "text": "Generated Plot:", "plot": fig})
                     st.plotly_chart(fig, key="user_generated_plot")
             except Exception as e:
-                st.write(f"Could not plot  the data because: {e}")
+                st.error(f"Could not plot  the data because: {e}")
 
             if len(st.session_state['Session'][st.session_state['current_Session']]) == 3:
                 print(len(st.session_state['Session'][st.session_state['current_Session']]))
