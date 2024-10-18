@@ -377,7 +377,6 @@ if user_input and  generate:
                 from langchain.schema.runnable import RunnablePassthrough
                 import asyncio
 		from langchain.memory import ConversationBufferMemory
-
                 RAG_PROMPT = """\
 		Use the following context and conversation history to answer the user's query. If you cannot answer the question, please respond with 'I don't know'.
 		
