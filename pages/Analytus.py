@@ -90,32 +90,6 @@ llm_nvidia = ChatNVIDIA(model="meta/llama3-70b-instruct", api_key=nvidia)
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = []
 
-with col3:
-    with st.popover("Usage"):
-        st.markdown("""
-        <div style="padding: 10px; font-family: Arial, sans-serif;">
-            <h3 style="text-align: center;">About Prep W Lervis</h3>
-            <p><strong>Prep W Lervis</strong> is your AI-powered assistant designed to help you prepare for interviews more efficiently. It provides tailored information based on your inputs and empowers you to practice with relevant data and resources.</p>
-            <h4>Features:</h4>
-            <ul style="margin-left: 20px;">
-                <li><strong>Interactive Interview Assistance:</strong> The agent helps you prepare by delivering educational content and structured responses to your questions.</li>
-                <li><strong>Real-time Question and Answer:</strong> Enter your interview-related questions and receive context-aware, concise responses.</li>
-                <li><strong>Soft Skills Training:</strong> Provides helpful tips and materials to enhance your interview readiness, including communication and problem-solving skills.</li>
-                <li><strong>Document Upload:</strong> Upload documents like PDFs or PPTs, and the app will assist in extracting key information to guide your preparation.</li>
-                <li><strong>RAG (Retrieve and Generate) Functionality:</strong> If the RAG checkbox is selected, the system will use Retrieval-Augmented Generation to search for relevant data and generate answers based on your uploaded documents.</li>
-            </ul>
-            <h4>How to Use the App:</h4>
-            <ol style="margin-left: 20px;">
-                <li>Start by uploading a document (PDF, DOC, PPT) for analysis or simply type in your query in the input box.</li>
-                <li>The agent will process your input, retrieve relevant information, and provide a concise answer.</li>
-                <li>Enable RAG by selecting the checkbox if you want the system to pull in data from your uploaded documents during the conversation.</li>
-                <li>View the agent's response along with relevant links and resources directly in the chat interface.</li>
-            </ol>
-            <p>The goal of <strong>Prep W Lervis</strong> is to simplify your interview preparation by offering tailored advice and insights in real-time. Let's get you ready for success!</p>
-        </div>
-    """, unsafe_allow_html=True)
-
-
 with col2:
     st.header("Chat with your documents")
     data = st.file_uploader("Upload a file",type=['pdf','doc','ppt','pptx','xls','xlsx'])
