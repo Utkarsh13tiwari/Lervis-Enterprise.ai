@@ -372,12 +372,12 @@ if user_input and  generate:
                 #retrieval_chain = create_retrieval_chain(retriever_chain, document_chain)
                 
     #------------------------------------------------------------------------------------------------------------------------------------------------
-		from operator import itemgetter
-	        from langchain.schema.output_parser import StrOutputParser
-	        from langchain.schema.runnable import RunnablePassthrough
-	        import asyncio
-	        from langchain.memory import ConversationBufferMemory
-	        RAG_PROMPT = """\
+				from operator import itemgetter
+        from langchain.schema.output_parser import StrOutputParser
+        from langchain.schema.runnable import RunnablePassthrough
+        import asyncio
+        from langchain.memory import ConversationBufferMemory
+        RAG_PROMPT = """\
 		Use the following context and conversation history to answer the user's query. If you cannot answer the question, please respond with 'I don't know'.
 		
 		Conversation History:
