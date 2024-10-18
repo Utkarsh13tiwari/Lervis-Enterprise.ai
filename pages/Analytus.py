@@ -58,8 +58,6 @@ llm_nvidia = ChatNVIDIA(model="meta/llama3-70b-instruct", api_key=nvidia)
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = []
 
-col1, col2, col3 = st.columns([1,4,1])
-
 with col3:
     with st.popover("Usage"):
         st.markdown("""
