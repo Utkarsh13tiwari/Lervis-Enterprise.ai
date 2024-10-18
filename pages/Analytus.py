@@ -34,6 +34,35 @@ tavily = st.secrets.db_credentials.tavily
 groq = st.secrets.db_credentials.groq
 nvidia = st.secrets.db_credentials.nvidia
 
+#---------------------------------------------------------------------------------------
+st.markdown(
+    """
+    <style>
+    .message-container {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    .message-container .user-message {
+        text-align: right;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #0c0912;
+        margin-bottom: 20px;
+    }
+    .message-container .assistant-message {
+        text-align: left;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    .st-emotion-cache-qdbtli {
+        width: 70%;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 #--------------------------------------------------------------------------------------
 from sentence_transformers import SentenceTransformer
 from langchain.embeddings.base import Embeddings
