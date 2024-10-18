@@ -31,8 +31,6 @@ groq = st.secrets.db_credentials.groq
 nvidia = st.secrets.db_credentials.nvidia
 
 #--------------------------------------------------------------------------------------
-from langchain.embeddings import HuggingFaceEmbeddings
-
 from sentence_transformers import SentenceTransformer
 from langchain.embeddings.base import Embeddings
 
@@ -50,13 +48,13 @@ embedding_model = CustomEmbeddings(model_name="sentence-transformers/paraphrase-
 
 
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
-llm_nvidia = ChatNVIDIA(model="meta/llama3-70b-instruct",api_key = nvidia)
+llm_nvidia = ChatNVIDIA(model="meta/llama3-70b-instruct", api_key=nvidia)
 #--------------------------------------------------------------------------------------
 
-col1, col2, col3 = st.columns([1,4,1])
+if 'chat_history' not in st.session_state:
+    st.session_state.chat_history = []
 
-with col1:
-        st.image('transperent_logo.png', width=200)
+col1, col2, col3 = st.columns([1,4,1])
 
 with col3:
     with st.popover("Usage"):
@@ -91,147 +89,205 @@ with col2:
 if user_input and  generate:
     with col2:
         print(data.type)
-        try: 
-            if  data.type == 'application/pdf':
-                from langchain.document_loaders import PyMuPDFLoader
-                from langchain.text_splitter import RecursiveCharacterTextSplitter
-                if data is not None:
-                    with open("temp_file", "wb") as f:
-                        f.write(data.getbuffer())
+        #try: 
+        if  data.type == 'application/pdf':
+            from langchain.document_loaders import PyMuPDFLoader
+            from langchain.text_splitter import RecursiveCharacterTextSplitter
+            if data is not None:
+                with open("temp_file", "wb") as f:
+                    f.write(data.getbuffer())
 
-                
-                loader = PyMuPDFLoader("temp_file")
-                document = loader.load()
-
-                #--------------------------------------------------------------------------------------
-                #loader = PyMuPDFLoader("temp_file")
-                #documents = loader.load()
-                text_splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=200)
-                splits = text_splitter.split_documents(documents=document)
-                print("************************** splits check **************************")
-                #print(splits)
-                print("************************** check **************************")
+            
+            loader = PyMuPDFLoader("temp_file")
+            document = loader.load()
 
             #--------------------------------------------------------------------------------------
-            # Create a LangChain embedding
+            #loader = PyMuPDFLoader("temp_file")
+            #documents = loader.load()
+            text_splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=200)
+            splits = text_splitter.split_documents(documents=document)
+            print("************************** splits check **************************")
+            #print(splits)
+            print("************************** check **************************")
 
-                from langchain_chroma import Chroma
-                import chromadb
-                persistent_client = chromadb.PersistentClient()
-                persistent_client.delete_collection("langchain")
-                collection = persistent_client.get_or_create_collection("langchain")
-                #collection.delete()
+        #--------------------------------------------------------------------------------------
+        # Create a LangChain embedding
 
-                vectorstore = Chroma(
-                    client=persistent_client,
-                    collection_name="langchain",
-                    embedding_function=embedding_model,
+            from langchain_chroma import Chroma
+            import chromadb
+            persistent_client = chromadb.PersistentClient()
+            persistent_client.delete_collection("langchain")
+            collection = persistent_client.get_or_create_collection("langchain")
+            #collection.delete()
+
+            vectorstore = Chroma(
+                client=persistent_client,
+                collection_name="langchain",
+                embedding_function=embedding_model,
+            )
+            vectorstore.add_documents(splits)
+            #vectorstore = Chroma.from_documents(splits, embedding=embedding_model, persist_directory="./chroma_langchain_db")
+            retriever = vectorstore.as_retriever()
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------
+            from langchain.prompts import ChatPromptTemplate
+            from langchain_core.prompts import MessagesPlaceholder
+            prompt_search_query = ChatPromptTemplate.from_messages([
+            MessagesPlaceholder(variable_name="chat_history"),
+            ("user","{input}"),
+            ("user","Given the above conversation, generate a search query to look up to get information relevant to the conversation")
+            ])
+            #retriever_chain = create_history_aware_retriever(llm_nvidia, retriever, prompt_search_query)
+#------------------------------------------------------------------------------------------------------------------------------------------------
+            #prompt_get_answer = ChatPromptTemplate.from_messages([
+            #("system", "Answer the user's questions based on the below context:\\n\\n{context}"),
+            #MessagesPlaceholder(variable_name="chat_history",)
+            #("user","{input}"),
+            #])
+
+            from langchain.chains.combine_documents import create_stuff_documents_chain
+            #document_chain=create_stuff_documents_chain(llm_nvidia,prompt_get_answer)
+#------------------------------------------------------------------------------------------------------------------------------------------------
+
+            from langchain.chains import create_retrieval_chain
+            #retrieval_chain = create_retrieval_chain(retriever_chain, document_chain)
+            
+#------------------------------------------------------------------------------------------------------------------------------------------------
+            from langchain.schema.output_parser import StrOutputParser
+            from operator import itemgetter
+            from langchain.schema.runnable import RunnablePassthrough
+            import asyncio
+            from langchain.memory import ConversationBufferMemory
+            RAG_PROMPT = """\
+            Use the following context and conversation history to answer the user's query. If you cannot answer the question, please respond with 'I don't know'.
+            
+            Conversation History:
+            {history}
+            
+            Question:
+            {question}
+            
+            Context:
+            {context}
+            """
+            
+            # Initialize the memory
+            memory = ConversationBufferMemory(memory_key="history", input_key="question", output_key="response")
+            
+            rag_prompt = ChatPromptTemplate.from_template(RAG_PROMPT)
+            
+            async def run_chain():
+                # Define the chain with memory
+                retrieval_augmented_generation_chain = (
+                    {"context": itemgetter("question") | retriever, "question": itemgetter("question")}
+                    | RunnablePassthrough.assign(context=itemgetter("context"))
+                    | {"response": rag_prompt | llm_nvidia, "context": itemgetter("context")}
                 )
-                vectorstore.add_documents(splits)
-                #vectorstore = Chroma.from_documents(splits, embedding=embedding_model, persist_directory="./chroma_langchain_db")
-                retriever = vectorstore.as_retriever()
+            
+                # Await the result of the async chain with memory
+                results = await retrieval_augmented_generation_chain.ainvoke(
+                    {"question": user_input, "context": splits, "history": memory.load_memory_variables({})['history']}
+                )
+            
+                # Add the latest response to memory
+                memory.save_context({"question": user_input}, {"response": results['response']})
+            
+                return results
+        
+            #with st.spinner("Retreving..."):
+            #    results = asyncio.run(run_chain())
 
-    #-----------------------------------------------------------------------------------------------------------------------------------------------
-                from langchain.prompts import ChatPromptTemplate
-                from langchain_core.prompts import MessagesPlaceholder
-                prompt_search_query = ChatPromptTemplate.from_messages([
-                MessagesPlaceholder(variable_name="chat_history"),
-                ("user","{input}"),
-                ("user","Given the above conversation, generate a search query to look up to get information relevant to the conversation")
-                ])
-                #retriever_chain = create_history_aware_retriever(llm_nvidia, retriever, prompt_search_query)
-    #------------------------------------------------------------------------------------------------------------------------------------------------
-                #prompt_get_answer = ChatPromptTemplate.from_messages([
-                #("system", "Answer the user's questions based on the below context:\\n\\n{context}"),
-                #MessagesPlaceholder(variable_name="chat_history",)
-                #("user","{input}"),
-                #])
+            contextualize_q_system_prompt = (
+                "Given a chat history and the latest user question "
+                "which might reference context in the chat history, "
+                "formulate a standalone question which can be understood "
+                "without the chat history. Do NOT answer the question, "
+                "just reformulate it if needed and otherwise return it as is."
+            )
 
-                from langchain.chains.combine_documents import create_stuff_documents_chain
-                #document_chain=create_stuff_documents_chain(llm_nvidia,prompt_get_answer)
-    #------------------------------------------------------------------------------------------------------------------------------------------------
+            contextualize_q_prompt = ChatPromptTemplate.from_messages(
+                [
+                    ("system", contextualize_q_system_prompt),
+                    MessagesPlaceholder("chat_history"),
+                    ("human", "{input}"),
+                ]
+            )
+            history_aware_retriever = create_history_aware_retriever(
+                llm_nvidia, retriever, contextualize_q_prompt
+            )
+            from langchain.chains import create_retrieval_chain
+            from langchain.chains.combine_documents import create_stuff_documents_chain
 
-                from langchain.chains import create_retrieval_chain
-                #retrieval_chain = create_retrieval_chain(retriever_chain, document_chain)
-                
-    #------------------------------------------------------------------------------------------------------------------------------------------------
-                from langchain.schema.output_parser import StrOutputParser
-                from operator import itemgetter
-                from langchain.schema.runnable import RunnablePassthrough
-                import asyncio
-                from langchain.memory import ConversationBufferMemory
-                RAG_PROMPT = """\
-                Use the following context and conversation history to answer the user's query. If you cannot answer the question, please respond with 'I don't know'.
-                
-                Conversation History:
-                {history}
-                
-                Question:
-                {question}
-                
-                Context:
-                {context}
-                """
-                
-                # Initialize the memory
-                memory = ConversationBufferMemory(memory_key="history", input_key="question", output_key="response")
-                
-                rag_prompt = ChatPromptTemplate.from_template(RAG_PROMPT)
-                
-                async def run_chain():
-                    # Define the chain with memory
-                    retrieval_augmented_generation_chain = (
-                        {"context": itemgetter("question") | retriever, "question": itemgetter("question")}
-                        | RunnablePassthrough.assign(context=itemgetter("context"))
-                        | {"response": rag_prompt | llm_nvidia, "context": itemgetter("context")}
-                    )
-                
-                    # Await the result of the async chain with memory
-                    results = await retrieval_augmented_generation_chain.ainvoke(
-                        {"question": user_input, "context": splits, "history": memory.load_memory_variables({})['history']}
-                    )
-                
-                    # Add the latest response to memory
-                    memory.save_context({"question": user_input}, {"response": results['response']})
-                
-                    return results
-			
-                with st.spinner("Retreving..."):
-                    results = asyncio.run(run_chain())
-
-    #------------------------------------------------------------------------------------------------------------------------------------------------
-                system_prompt = (
-                "Use the following context to answer the user's query."
-                "Use three sentences maximum and answer in regress manner."
+            system_prompt = (
+                "You are an assistant for question-answering tasks. "
+                "Use the following pieces of retrieved context to answer "
+                "the question. If you don't know the answer, say that you "
+                "don't know. Use three sentences maximum and keep the "
+                "answer concise."
                 "\n\n"
                 "{context}"
-                )
+            )
 
-                from langchain.prompts import ChatPromptTemplate
-                prompt = ChatPromptTemplate.from_messages(
-                    [
-                        ("system", "Use the following context to answer the user's query."
-                        "Use three sentences maximum and answer in regress manner."
-                        "\n\n"
-                        "{context}"),
-                        ("human", "{input}"),
-                    ]
-                )
+            prompt = ChatPromptTemplate.from_messages(
+                [
+                    ("system", system_prompt),
+                    ("human", "{input}"),
+                ]
+            )
+            qa_prompt = ChatPromptTemplate.from_messages(
+                [
+                    ("system", system_prompt),
+                    MessagesPlaceholder("chat_history"),
+                    ("human", "{input}"),
+                ]
+            )
 
-                from langchain.chains.combine_documents import create_stuff_documents_chain
-                question_answer_chain = create_stuff_documents_chain(llm_nvidia, prompt)
-                rag_chain = create_retrieval_chain(retriever, question_answer_chain)
-                #results = rag_chain.invoke({"input": user_input,  "context": splits}
-                #st.write(results['answer'])
 
-                #st.write(results)
-                import time
-                def stream_data():
-                    for word in results["response"].content.split(" "):
-                        yield word + " "
-                        time.sleep(0.02)
-                st.write_stream(stream_data)
-                #st.write(results["response"].content)
-            
-        except Exception as e:
-            st.error(f"An error occurred: {e}")
+            question_answer_chain = create_stuff_documents_chain(llm_nvidia, qa_prompt)
+
+            rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
+            from langchain_core.messages import AIMessage, HumanMessage
+
+            chat_history = st.session_state.chat_history
+
+            agent_response = rag_chain.invoke({"input": user_input, "chat_history": chat_history})
+            st.session_state.chat_history.extend(
+                [
+                    HumanMessage(content=user_input),
+                    AIMessage(content=agent_response["answer"]),
+                ]
+            )
+            st.write(chat_history)
+#------------------------------------------------------------------------------------------------------------------------------------------------
+            system_prompt = (
+            "Use the following context to answer the user's query."
+            "Use three sentences maximum and answer in regress manner."
+            "\n\n"
+            "{context}"
+            )
+
+            from langchain.prompts import ChatPromptTemplate
+            prompt = ChatPromptTemplate.from_messages(
+                [
+                    ("system", "Use the following context to answer the user's query."
+                    "Use three sentences maximum and answer in regress manner."
+                    "\n\n"
+                    "{context}"),
+                    ("human", "{input}"),
+                ]
+            )
+
+            from langchain.chains.combine_documents import create_stuff_documents_chain
+            question_answer_chain = create_stuff_documents_chain(llm_nvidia, prompt)
+            rag_chain = create_retrieval_chain(retriever, question_answer_chain)
+            #results = rag_chain.invoke({"input": user_input,  "context": splits}
+            #st.write(results['answer'])
+
+            #st.write(results)
+            import time
+            def stream_data():
+                for word in agent_response["answer"].split(" "):
+                    yield word + " "
+                    time.sleep(0.02)
+            st.write_stream(stream_data)
+            #st.write(results["response"].content)
