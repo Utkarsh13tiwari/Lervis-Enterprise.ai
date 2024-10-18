@@ -199,7 +199,12 @@ write_query = create_sql_query_chain(llm_gpt, db)
 
 answer_prompt = PromptTemplate.from_template(
     """Given the following user question, corresponding SQL query, and SQL result, answer the user question.
+    You are an agent designed to interact with a SQL database.
+    Given an input question, create a syntactically correct SQLite query to run, then look at the results of the query and return the answer.
+    You can order the results by a relevant column to return the most interesting examples in the database.
+    Never query for all the columns from a specific table, only ask for the relevant columns given the question.
     If you dont know the answer just say you dont know.
+    
     Response Format:
     **SQL query used**: Display the exact SQL query that you executed with in ```sql ```.
     **Answer**: Provide the results in markdown and points based on the query execution.
