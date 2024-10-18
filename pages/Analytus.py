@@ -291,7 +291,8 @@ if user_input and data is not None:
 
             chat_history = st.session_state.chat_history
 
-            agent_response = rag_chain.invoke({"input": user_input, "chat_history": chat_history})
+            with st.spinner("Agent is generating..."):
+                agent_response = rag_chain.invoke({"input": user_input, "chat_history": chat_history})
             st.session_state.chat_history.extend(
                 [
                     HumanMessage(content=user_input),
@@ -323,8 +324,10 @@ if user_input and data is not None:
             #results = rag_chain.invoke({"input": user_input,  "context": splits}
             #st.write(results['answer'])
 
+            #st.write(results)
             st.markdown(f'<div class="message-container"><p class="user-message">{user_input}</p></div>', unsafe_allow_html=True)
             import time
+            st.write("### Agent Response:")
             def stream_data():
                 for word in agent_response["answer"].split(" "):
                     yield word + " "
