@@ -259,56 +259,12 @@ with col2:
     user_input = st.text_area("Enter your query:",args=(True,))
 
     generate = st.button("Answer")
+
+
 if user_input and  generate:
-
-
     with col2:
         print(data.type)
         try: 
-            #if data.type == 'application/vnd.ms-excel' or data.type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
-                #st.write("Excel file uploaded.")
-                #agent = create_agent(data, 'xls')
-
-                # Query the agent.
-                #with st.spinner("Retreving..."):
-                    #response = query_agent(agent=agent, query=user_input)
-
-                # Debug output
-                #print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-                #print(response)
-                #print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-                # Decode the response.
-                #if response:
-                #    decoded_response = decode_response(response)
-
-                # Write the response to the Streamlit app.
-                #if decode_response:
-                #    write_response(decoded_response)
-                
-                #else:
-                #    st.write(response)
-
-            #if data.type == 'text/csv':
-                #agent = create_agent(data, 'csv')
-
-                # Query the agent.
-                #response = query_agent(agent=agent, query=user_input)
-                #st.write(response.answer)
-
-                #print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-                #print(response)
-                #print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-                # Decode the response.
-                #if response:
-                #    decoded_response = decode_response(response)
-
-                # Write the response to the Streamlit app.
-                #if decode_response:
-                #    write_response(decoded_response)
-                
-                #else:
-                #    st.write(response)
-
             if  data.type == 'application/pdf':
                 from langchain.document_loaders import PyMuPDFLoader
                 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -373,45 +329,45 @@ if user_input and  generate:
                 
     #------------------------------------------------------------------------------------------------------------------------------------------------
 				from operator import itemgetter
-        from langchain.schema.output_parser import StrOutputParser
-        from langchain.schema.runnable import RunnablePassthrough
-        import asyncio
-        from langchain.memory import ConversationBufferMemory
-        RAG_PROMPT = """\
-		Use the following context and conversation history to answer the user's query. If you cannot answer the question, please respond with 'I don't know'.
-		
-		Conversation History:
-		{history}
-		
-		Question:
-		{question}
-		
-		Context:
-		{context}
-		"""
-		
-		# Initialize the memory
-		memory = ConversationBufferMemory(memory_key="history", input_key="question", output_key="response")
-		
-		rag_prompt = ChatPromptTemplate.from_template(RAG_PROMPT)
-		
-		async def run_chain():
-		    # Define the chain with memory
-		    retrieval_augmented_generation_chain = (
-		        {"context": itemgetter("question") | retriever, "question": itemgetter("question")}
-		        | RunnablePassthrough.assign(context=itemgetter("context"))
-		        | {"response": rag_prompt | llm_nvidia, "context": itemgetter("context")}
-		    )
-		
-		    # Await the result of the async chain with memory
-		    results = await retrieval_augmented_generation_chain.ainvoke(
-		        {"question": user_input, "context": splits, "history": memory.chat_memory}
-		    )
-		
-		    # Add the latest response to memory
-		    memory.chat_memory.append({"question": user_input, "response": results})
-		
-		    return results
+                from langchain.schema.output_parser import StrOutputParser
+                from langchain.schema.runnable import RunnablePassthrough
+                import asyncio
+                from langchain.memory import ConversationBufferMemory
+                RAG_PROMPT = """\
+                Use the following context and conversation history to answer the user's query. If you cannot answer the question, please respond with 'I don't know'.
+                
+                Conversation History:
+                {history}
+                
+                Question:
+                {question}
+                
+                Context:
+                {context}
+                """
+                
+                # Initialize the memory
+                memory = ConversationBufferMemory(memory_key="history", input_key="question", output_key="response")
+                
+                rag_prompt = ChatPromptTemplate.from_template(RAG_PROMPT)
+                
+                async def run_chain():
+                    # Define the chain with memory
+                    retrieval_augmented_generation_chain = (
+                        {"context": itemgetter("question") | retriever, "question": itemgetter("question")}
+                        | RunnablePassthrough.assign(context=itemgetter("context"))
+                        | {"response": rag_prompt | llm_nvidia, "context": itemgetter("context")}
+                    )
+                
+                    # Await the result of the async chain with memory
+                    results = await retrieval_augmented_generation_chain.ainvoke(
+                        {"question": user_input, "context": splits, "history": memory.chat_memory}
+                    )
+                
+                    # Add the latest response to memory
+                    memory.chat_memory.append({"question": user_input, "response": results})
+                
+                    return results
 			
                 with st.spinner("Retreving..."):
                     results = asyncio.run(run_chain())
