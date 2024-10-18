@@ -298,7 +298,6 @@ if user_input and data is not None:
                     AIMessage(content=agent_response["answer"]),
                 ]
             )
-            st.write(chat_history)
 #------------------------------------------------------------------------------------------------------------------------------------------------
             system_prompt = (
             "Use the following context to answer the user's query."
