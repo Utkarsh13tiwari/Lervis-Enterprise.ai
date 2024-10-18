@@ -335,7 +335,7 @@ if user_input and data is not None:
                     time.sleep(0.02)
             st.write_stream(stream_data)
             #st.write(results["response"].content)
-            add_message_to_history(user_input, agent_response)
+            add_message_to_history(user_input, agent_response["answer"])
         
         except Exception as e:
             st.error(f"An error occurred: {e}")
