@@ -1,5 +1,5 @@
 beautifulsoup4==4.12.3
-chromadb==0.5.11
+chromadb
 langchain==0.3.3
 langchain_chroma==0.1.4
 langchain_community==0.3.2
