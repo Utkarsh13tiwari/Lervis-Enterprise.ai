@@ -376,32 +376,43 @@ if user_input and  generate:
                 from langchain.schema.output_parser import StrOutputParser
                 from langchain.schema.runnable import RunnablePassthrough
                 import asyncio
+		from langchain.memory import ConversationBufferMemory
 
                 RAG_PROMPT = """\
-                Use the following context to answer the user's query. If you cannot answer the question, please respond with 'I don't know'.
-
-                Question:
-                {question}
-
-                Context:
-                {context}
-                """
-
-                rag_prompt = ChatPromptTemplate.from_template(RAG_PROMPT)
-
-                async def run_chain():
-                    rag_prompt = ChatPromptTemplate.from_template(RAG_PROMPT)
-
-                    retrieval_augmented_generation_chain = (
-                        {"context": itemgetter("question") 
-                        | retriever, "question": itemgetter("question")}
-                        | RunnablePassthrough.assign(context=itemgetter("context"))
-                        | {"response": rag_prompt | llm_nvidia, "context": itemgetter("context")}
-                    )
-
-                    # Await the result of the async chain
-                    results = await retrieval_augmented_generation_chain.ainvoke({"question" : user_input, "context": splits})
-                    return results
+		Use the following context and conversation history to answer the user's query. If you cannot answer the question, please respond with 'I don't know'.
+		
+		Conversation History:
+		{history}
+		
+		Question:
+		{question}
+		
+		Context:
+		{context}
+		"""
+		
+		# Initialize the memory
+		memory = ConversationBufferMemory(memory_key="history", input_key="question", output_key="response")
+		
+		rag_prompt = ChatPromptTemplate.from_template(RAG_PROMPT)
+		
+		async def run_chain():
+		    # Define the chain with memory
+		    retrieval_augmented_generation_chain = (
+		        {"context": itemgetter("question") | retriever, "question": itemgetter("question")}
+		        | RunnablePassthrough.assign(context=itemgetter("context"))
+		        | {"response": rag_prompt | llm_nvidia, "context": itemgetter("context")}
+		    )
+		
+		    # Await the result of the async chain with memory
+		    results = await retrieval_augmented_generation_chain.ainvoke(
+		        {"question": user_input, "context": splits, "history": memory.chat_memory}
+		    )
+		
+		    # Add the latest response to memory
+		    memory.chat_memory.append({"question": user_input, "response": results})
+		
+		    return results
 
                 with st.spinner("Retreving..."):
                     results = asyncio.run(run_chain())
