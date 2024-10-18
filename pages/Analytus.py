@@ -92,7 +92,6 @@ with col2:
 
 if user_input and  generate:
     with col2:
-        print(data.type)
         try:
             from langchain.document_loaders import PyMuPDFLoader
             from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -103,10 +102,6 @@ if user_input and  generate:
             
             loader = PyMuPDFLoader("temp_file")
             document = loader.load()
-
-            #--------------------------------------------------------------------------------------
-            #loader = PyMuPDFLoader("temp_file")
-            #documents = loader.load()
             text_splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=200)
             splits = text_splitter.split_documents(documents=document)
             print("************************** splits check **************************")
