@@ -97,6 +97,8 @@ db = SQLDatabase.from_uri(r"sqlite:///Chinook.db")
 col1, col2, col3 = st.columns([1,4,1])
 with col1:
         st.image('transperent_logo.png', width=200)
+        with col1:
+            st.link_button("Connect", linkedin_url)
 
 with col3:
     with st.popover("Usage"):
