@@ -107,6 +107,11 @@ with col3:
 	        </div>
         """, unsafe_allow_html=True)
 
+
+with col2:
+    st.header("Chat with your documents")
+    data = st.file_uploader("Upload a file",type=['pdf','doc','ppt','pptx','xls','xlsx'])
+
 with col2:
     def add_message_to_history(user_input, agent_response):
             st.session_state['Session'].append({"isUser": True, "text": user_input})
@@ -125,10 +130,6 @@ with col2:
             else:
                 st.write("### Agent Response:")
                 st.write(message["text"])
-
-with col2:
-    st.header("Chat with your documents")
-    data = st.file_uploader("Upload a file",type=['pdf','doc','ppt','pptx','xls','xlsx'])
 
 user_input = st.chat_input("Enter your query:",args=(True,))
 
