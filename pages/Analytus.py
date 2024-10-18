@@ -188,11 +188,11 @@ if user_input and  generate:
                 
                     # Await the result of the async chain with memory
                     results = await retrieval_augmented_generation_chain.ainvoke(
-                        {"question": user_input, "context": splits, "history": memory.chat_memory}
+                        {"question": user_input, "context": splits, "history": memory.load_memory_variables({})['history']}
                     )
                 
                     # Add the latest response to memory
-                    memory.chat_memory.append({"question": user_input, "response": results})
+                    memory.save_context({"question": user_input}, {"response": results['response']})
                 
                     return results
 			
