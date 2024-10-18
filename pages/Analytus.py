@@ -79,16 +79,32 @@ with col3:
         """, unsafe_allow_html=True)
 
 with col2:
+    def add_message_to_history(user_input, agent_response):
+            st.session_state['Session'].append({"isUser": True, "text": user_input})
+            st.session_state['Session'].append({"isUser": False, "text": agent_response})
+
+    if 'Session' not in st.session_state:
+        st.session_state['Session'] = [] 
+
+    if 'run' not in st.session_state:
+        st.session_state.run = False
+
+    with col2:
+        for message in st.session_state['Session']:
+            if message["isUser"]:
+                st.markdown(f'<div class="message-container"><p class="user-message">{message["text"]}</p></div>', unsafe_allow_html=True)
+            else:
+                st.write("### Agent Response:")
+                st.write(message["text"])
+
+with col2:
     st.header("Chat with your documents")
     data = st.file_uploader("Upload a file",type=['pdf','doc','ppt','pptx','xls','xlsx'])
 
-with col2:
-    user_input = st.text_area("Enter your query:",args=(True,))
+if data is not None:
+    user_input = st.chat_input("Enter your query:",args=(True,))
 
-    generate = st.button("Answer")
-
-
-if user_input and  generate:
+if user_input:
     with col2:
         try:
             from langchain.document_loaders import PyMuPDFLoader
