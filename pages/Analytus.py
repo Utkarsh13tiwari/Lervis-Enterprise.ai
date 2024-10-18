@@ -323,7 +323,7 @@ if user_input and data is not None:
             #results = rag_chain.invoke({"input": user_input,  "context": splits}
             #st.write(results['answer'])
 
-            #st.write(results)
+            st.markdown(f'<div class="message-container"><p class="user-message">{user_input}</p></div>', unsafe_allow_html=True)
             import time
             def stream_data():
                 for word in agent_response["answer"].split(" "):
@@ -331,6 +331,7 @@ if user_input and data is not None:
                     time.sleep(0.02)
             st.write_stream(stream_data)
             #st.write(results["response"].content)
+            add_message_to_history(user_input, agent_response)
         
         except Exception as e:
             st.error(f"An error occurred: {e}")
