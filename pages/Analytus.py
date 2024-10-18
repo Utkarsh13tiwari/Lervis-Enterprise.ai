@@ -101,10 +101,9 @@ with col2:
     st.header("Chat with your documents")
     data = st.file_uploader("Upload a file",type=['pdf','doc','ppt','pptx','xls','xlsx'])
 
-if data is not None:
-    user_input = st.chat_input("Enter your query:",args=(True,))
+user_input = st.chat_input("Enter your query:",args=(True,))
 
-if user_input:
+if user_input and data is not None:
     with col2:
         try:
             from langchain.document_loaders import PyMuPDFLoader
