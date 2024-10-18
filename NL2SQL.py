@@ -199,7 +199,7 @@ write_query = create_sql_query_chain(llm_gpt, db)
 
 answer_prompt = PromptTemplate.from_template(
     """Given the following user question, corresponding SQL query, and SQL result, answer the user question.
-    
+    If you dont know the answer just say you dont know.
     Response Format:
     **SQL query used**: Display the exact SQL query that you executed with in ```sql ```.
     **Answer**: Provide the results in markdown and points based on the query execution.
