@@ -95,6 +95,7 @@ engine = create_engine(r"sqlite:///Chinook.db")
 
 db = SQLDatabase.from_uri(r"sqlite:///Chinook.db")
 col1, col2, col3 = st.columns([1,4,1])
+linkedin_url = "https://www.linkedin.com/company/lervis-ai/?viewAsMember=true" 
 with col1:
         st.image('transperent_logo.png', width=200)
         with col1:
