@@ -84,7 +84,8 @@ embedding_model = CustomEmbeddings(model_name="sentence-transformers/paraphrase-
 
 
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
-llm_nvidia = ChatNVIDIA(model="meta/llama3-70b-instruct", api_key=nvidia)
+#llm_nvidia = ChatNVIDIA(model="meta/llama3-70b-instruct", api_key=nvidia)
+llm_nvidia = ChatOpenAI(model="gpt-4o", temperature=0.3, api_key=openai)
 #--------------------------------------------------------------------------------------
 
 if 'chat_history' not in st.session_state:
