@@ -78,7 +78,7 @@ os.environ["OPENAI_API_KEY"] = 'sk-proj-vrlNsA-piWffTeb-sw6ZaYRrZKH0uTp4ZwQCxoW5
 #----------------------------------------------------------------------------------------------------------------------
 col1, col2, col3 = st.columns([1, 4, 1])
 #------------------------------------------------- llm's -----------------------------------------------------------------------------
-llm_gpt = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, api_key=openai)
+llm_gpt = ChatOpenAI(model="gpt-4o", temperature=0, api_key=openai)
 
 llm_groq = ChatGroq(
     model="mixtral-8x7b-32768",
