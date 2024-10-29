@@ -72,13 +72,11 @@ st.markdown(
 )
 
 #-------------------------------------------  API Key's ---------------------------------------------------------------
-os.environ["GROQ_API_KEY"] = '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'
-os.environ["OPENAI_API_KEY"] = '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'
 
 #----------------------------------------------------------------------------------------------------------------------
 col1, col2, col3 = st.columns([1, 4, 1])
 #------------------------------------------------- llm's -----------------------------------------------------------------------------
-llm_gpt = ChatOpenAI(model="gpt-4o", temperature=0, api_key=openai)
+llm_gpt = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, api_key=openai)
 
 llm_groq = ChatGroq(
     model="mixtral-8x7b-32768",
