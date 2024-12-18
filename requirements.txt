@@ -14,7 +14,7 @@ langgraph==0.2.35
 llama_index==0.11.17
 llama-index
 Markdown==3.7
-openai==1.51.2
+openai==1.55.3
 pandas==1.5.3
 Pillow==10.4.0
 plotly==5.24.1
