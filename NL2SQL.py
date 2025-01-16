@@ -77,9 +77,9 @@ st.markdown(
 col1, col2, col3 = st.columns([1, 4, 1])
 #------------------------------------------------- llm's -----------------------------------------------------------------------------
 #llm_gpt = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, api_key=openai)
-
+#mixtral-8x7b-32768
 llm_groq = ChatGroq(
-    model="mixtral-8x7b-32768",
+    model="llama3-70b-8192",
     temperature=0,
     max_tokens=None,  # Limiting the number of tokens per request
     timeout=None,
