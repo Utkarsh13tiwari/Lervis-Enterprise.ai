@@ -223,7 +223,7 @@ chain = (
         result=itemgetter("query") | execute_query
     )
     | answer_prompt
-    | llm_gpt
+    | llm_groq
     | StrOutputParser()
 )
 #----------------------------------- System prompt ----------------------------------------------------------
