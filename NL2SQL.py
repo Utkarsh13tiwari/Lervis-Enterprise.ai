@@ -188,7 +188,7 @@ fig = px.bar(df, x="FirstName", y="TotalSpent", title="Customer who spent most o
 import plotly.express as px
 from langchain.chains import LLMChain
 prompt = PromptTemplate(input_variables=["query"], template=template)
-chain2 = LLMChain(llm=llm_gpt, prompt=prompt)
+chain2 = LLMChain(llm=llm_groq, prompt=prompt)
 #----------------------------------------------- O&A -----------------------------------------------------------
 from langchain_community.tools.sql_database.tool import QuerySQLDataBaseTool
 from langchain_core.output_parsers import StrOutputParser
@@ -196,7 +196,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 
 execute_query = QuerySQLDataBaseTool(db=db)
-write_query = create_sql_query_chain(llm_gpt, db)
+write_query = create_sql_query_chain(llm_groq, db)
 
 answer_prompt = PromptTemplate.from_template(
     """Given the following user question, corresponding SQL query, and SQL result, answer the user question.
@@ -228,7 +228,7 @@ chain = (
 )
 #----------------------------------- System prompt ----------------------------------------------------------
 
-toolkit = SQLDatabaseToolkit(db=db, llm=llm_gpt)
+toolkit = SQLDatabaseToolkit(db=db, llm=llm_groq)
 
 tools = toolkit.get_tools()
 
@@ -256,13 +256,13 @@ Response Format:
 
 
 system_message = SystemMessage(content=SQL_PREFIX)
-agent_executor = create_react_agent(llm_gpt, tools, messages_modifier=system_message)
+agent_executor = create_react_agent(llm_groq, tools, messages_modifier=system_message)
 #agent_executor = AgentExecutor(agent=agent_executor, tools=tools)
 #--------------------------------------------- Agent --------------------------------------------------------
 
 prompt = PromptTemplate.from_template(SQL_PREFIX)
 #agent_executor = create_sql_agent(llm_gpt, db=db, agent_type="openai-tools", verbose=True, message = system_message)
-agent_executor = create_sql_agent(llm_gpt, db=db, verbose=True, top_k=1000, prefix=prompt, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True, return_intermediate_steps=True)
+agent_executor = create_sql_agent(llm_groq, db=db, verbose=True, top_k=1000, prefix=prompt, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True, return_intermediate_steps=True)
 
 #--------------------------------------------------------------
 
