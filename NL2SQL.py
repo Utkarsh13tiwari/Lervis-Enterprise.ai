@@ -76,9 +76,9 @@ st.markdown(
 #----------------------------------------------------------------------------------------------------------------------
 col1, col2, col3 = st.columns([1, 4, 1])
 #------------------------------------------------- llm's -----------------------------------------------------------------------------
-#llm_gpt = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, api_key=openai)
+llm_gpt = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, api_key=openai)
 #mixtral-8x7b-32768
-llm_groq = ChatGroq(
+llm_gpt = ChatGroq(
     model="llama3-70b-8192",
     temperature=0,
     max_tokens=None,  # Limiting the number of tokens per request
@@ -188,7 +188,7 @@ fig = px.bar(df, x="FirstName", y="TotalSpent", title="Customer who spent most o
 import plotly.express as px
 from langchain.chains import LLMChain
 prompt = PromptTemplate(input_variables=["query"], template=template)
-chain2 = LLMChain(llm=llm_groq, prompt=prompt)
+chain2 = LLMChain(llm=llm_gpt, prompt=prompt)
 #----------------------------------------------- O&A -----------------------------------------------------------
 from langchain_community.tools.sql_database.tool import QuerySQLDataBaseTool
 from langchain_core.output_parsers import StrOutputParser
@@ -196,7 +196,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 
 execute_query = QuerySQLDataBaseTool(db=db)
-write_query = create_sql_query_chain(llm_groq, db)
+write_query = create_sql_query_chain(llm_gpt, db)
 
 answer_prompt = PromptTemplate.from_template(
     """Given the following user question, corresponding SQL query, and SQL result, answer the user question.
@@ -223,12 +223,12 @@ chain = (
         result=itemgetter("query") | execute_query
     )
     | answer_prompt
-    | llm_groq
+    | llm_gpt
     | StrOutputParser()
 )
 #----------------------------------- System prompt ----------------------------------------------------------
 
-toolkit = SQLDatabaseToolkit(db=db, llm=llm_groq)
+toolkit = SQLDatabaseToolkit(db=db, llm=llm_gpt)
 
 tools = toolkit.get_tools()
 
@@ -256,13 +256,13 @@ Response Format:
 
 
 system_message = SystemMessage(content=SQL_PREFIX)
-agent_executor = create_react_agent(llm_groq, tools, messages_modifier=system_message)
+agent_executor = create_react_agent(llm_gpt, tools, messages_modifier=system_message)
 #agent_executor = AgentExecutor(agent=agent_executor, tools=tools)
 #--------------------------------------------- Agent --------------------------------------------------------
 
 prompt = PromptTemplate.from_template(SQL_PREFIX)
 #agent_executor = create_sql_agent(llm_gpt, db=db, agent_type="openai-tools", verbose=True, message = system_message)
-agent_executor = create_sql_agent(llm_groq, db=db, verbose=True, top_k=1000, prefix=prompt, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True, return_intermediate_steps=True)
+agent_executor = create_sql_agent(llm_gpt, db=db, verbose=True, top_k=1000, prefix=prompt, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True, return_intermediate_steps=True)
 
 #--------------------------------------------------------------
 
