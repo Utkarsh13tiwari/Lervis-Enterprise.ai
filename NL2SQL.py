@@ -179,6 +179,7 @@ The above is join of two coloumns  "FirstName" and "LatsName" in df.
 correct code is:
 fig = px.bar(df, x="FirstName", y="TotalSpent", title="Customer who spent most on Iron Maiden")
 
+Also refer to the {df} to match the column/row name is correct.
 
 Please Return only the plot generation code and do not return anything else.
 
