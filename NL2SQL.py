@@ -172,7 +172,7 @@ fig = px.scatter(
     size_max=60,
 )
 
-Make sure when you join two columns in df, you just keep only 1 of the column name, example:
+Most importantly make sure when you join two columns in df, you just keep only 1 of the column name, example:
 
 fig = px.bar(df, x="FirstName LastName", y="TotalSpent", title="Customer who spent most on Iron Maiden")
 The above is join of two coloumns  "FirstName" and "LatsName" in df.
