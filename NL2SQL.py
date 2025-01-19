@@ -154,7 +154,7 @@ with col3:
 template = """
 You are a plotting assistant. Generate a plot in Plotly format based on the LLM response. You must identfy the SQL code in the query and generate a plot of the response:
 {query}
-{df}
+Additionally you are also with the dataframe: {df}
 
 The plot should be a Plotly figure object like this:
 fig = px.scatter(df, x="sepal_width", y="sepal_length")
